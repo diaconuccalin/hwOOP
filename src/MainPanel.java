@@ -8,41 +8,43 @@ public class MainPanel extends Frame{
     public MainPanel() {
         int w = 1200;
         int h = 800;
-        int r = 3;
-        int c = 4;
 
-        GridBagLayout gbl = new GridBagLayout();
-        GridLayout gl = new GridLayout(r, c);
 
         Label l1 = new Label("Vehicles", Label.CENTER);
         Label l2 = new Label("Stops", Label.CENTER);
         Label l3 = new Label("Routes", Label.CENTER);
         Label l4 = new Label("Employees", Label.CENTER);
 
-        l1.setSize(w/4, 20);
-        l2.setSize(w/4, 20);
-        l3.setSize(w/4, 20);
-        l4.setSize(w/4, 20);
+        l1.setBounds(40, 40, 250, 20);
+        l2.setBounds(330, 40, 250, 20);
+        l3.setBounds(620, 40, 250, 20);
+        l4.setBounds(910, 40, 250, 20);
+
 
         List ls1 = new List();
         List ls2 = new List();
         List ls3 = new List();
         List ls4 = new List();
 
-        ls1.setSize(w/4, 500);
+        ls1.setBounds(40, 70, 250, 630);
+        ls2.setBounds(330, 70, 250, 630);
+        ls3.setBounds(620, 70, 250, 630);
+        ls4.setBounds(910, 70, 250, 630);
+
 
         Label b1 = new Label("Depots");
         Button b2 = new Button("Depot 1");
         Button b3 = new Button("Depot 2");
         Button b4 = new Button("Depot 3");
 
-        b1.setSize(w/4, 20);
-        b2.setSize(w/4, 20);
-        b3.setSize(w/4, 20);
-        b4.setSize(w/4, 20);
+        b1.setBounds(40, 740, 250, 40);
+        b2.setBounds(330, 740, 250, 40);
+        b3.setBounds(620, 740, 250, 40);
+        b4.setBounds(910, 740, 250, 40);
+
 
         setVisible(true);
-        setLayout(gbl);
+        setLayout(null);
         setSize(w, h);
 
         add(l1);
