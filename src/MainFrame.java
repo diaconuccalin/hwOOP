@@ -8,12 +8,10 @@ public class MainFrame extends Frame{
     private List ls3 = new List();
     private List ls4 = new List();
 
-    private VehiclePark vp = new VehiclePark();
-
     private ErrorFrame ef = new ErrorFrame();
 
 
-    public MainFrame() {
+    public MainFrame(VehiclePark vp, AllRoutes ar, AllStops as) {
         int w = 800;
         int h = 500;
 
@@ -86,13 +84,25 @@ public class MainFrame extends Frame{
 
 
         Button addVehicleButton = new Button("Add Vehicle");
-        addVehicleButton.setBounds(8, 10, 120, 15);
+        addVehicleButton.setBounds(8, 10, 120, 20);
         controlPanel.add(addVehicleButton);
 
         addVehicleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddVehicleFrame avw = new AddVehicleFrame(ls1, vp, ef);
+            }
+        });
+
+
+        Button addRouteButton = new Button("Add Route");
+        addRouteButton.setBounds(8, 35, 120, 20);
+        controlPanel.add(addRouteButton);
+
+        addRouteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddRouteS1 ars = new AddRouteS1(ls3, ar, ef, as);
             }
         });
 
