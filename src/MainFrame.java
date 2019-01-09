@@ -14,8 +14,8 @@ public class MainFrame extends Frame{
 
 
     public MainFrame() {
-        int w = 1500;
-        int h = 800;
+        int w = 800;
+        int h = 500;
 
 
         Label l1 = new Label("Vehicles", Label.CENTER);
@@ -23,16 +23,16 @@ public class MainFrame extends Frame{
         Label l3 = new Label("Routes", Label.CENTER);
         Label l4 = new Label("Employees", Label.CENTER);
 
-        l1.setBounds(40, 40, 250, 20);
-        l2.setBounds(330, 40, 250, 20);
-        l3.setBounds(620, 40, 250, 20);
-        l4.setBounds(910, 40, 250, 20);
+        l1.setBounds(20, 40, 136, 20);
+        l2.setBounds(176, 40, 136, 20);
+        l3.setBounds(332, 40, 136, 20);
+        l4.setBounds(488, 40, 136, 20);
 
 
-        ls1.setBounds(40, 70, 250, 630);
-        ls2.setBounds(330, 70, 250, 630);
-        ls3.setBounds(620, 70, 250, 630);
-        ls4.setBounds(910, 70, 250, 630);
+        ls1.setBounds(20, 65, 136, 380);
+        ls2.setBounds(176, 65, 136, 380);
+        ls3.setBounds(332, 65, 136, 380);
+        ls4.setBounds(488, 65, 136, 380);
 
 
         Label b1 = new Label("Depots");
@@ -40,10 +40,10 @@ public class MainFrame extends Frame{
         Button b3 = new Button("Depot 2");
         Button b4 = new Button("Depot 3");
 
-        b1.setBounds(40, 740, 250, 40);
-        b2.setBounds(330, 740, 250, 40);
-        b3.setBounds(620, 740, 250, 40);
-        b4.setBounds(910, 740, 250, 40);
+        b1.setBounds(20, 460, 136, 20);
+        b2.setBounds(176, 460, 136, 20);
+        b3.setBounds(332, 460, 136, 20);
+        b4.setBounds(488, 460, 136, 20);
 
         b2.addActionListener(new ActionListener() {
             @Override
@@ -69,12 +69,12 @@ public class MainFrame extends Frame{
 
         Panel controlPanel = new Panel();
         controlPanel.setBackground(Color.lightGray);
-        controlPanel.setBounds(1200, 40, 250, 740);
+        controlPanel.setBounds(644, 40, 136, 440);
         controlPanel.setLayout(null);
 
 
         Button closeButton = new Button("Close");
-        closeButton.setBounds(75, 680, 100, 40);
+        closeButton.setBounds(43, 410, 50, 20);
         controlPanel.add(closeButton);
 
         closeButton.addActionListener(new ActionListener() {
@@ -86,7 +86,7 @@ public class MainFrame extends Frame{
 
 
         Button addVehicleButton = new Button("Add Vehicle");
-        addVehicleButton.setBounds(10, 10, 230, 30);
+        addVehicleButton.setBounds(8, 10, 120, 15);
         controlPanel.add(addVehicleButton);
 
         addVehicleButton.addActionListener(new ActionListener() {
