@@ -2,9 +2,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainPanel extends Frame{
-    public MainPanel() {
-        int w = 1200;
+public class MainFrame extends Frame{
+    private List ls1 = new List();
+    private List ls2 = new List();
+    private List ls3 = new List();
+    private List ls4 = new List();
+
+    private VehiclePark vp = new VehiclePark();
+
+
+    public MainFrame() {
+        int w = 1500;
         int h = 800;
 
 
@@ -18,11 +26,6 @@ public class MainPanel extends Frame{
         l3.setBounds(620, 40, 250, 20);
         l4.setBounds(910, 40, 250, 20);
 
-
-        List ls1 = new List();
-        List ls2 = new List();
-        List ls3 = new List();
-        List ls4 = new List();
 
         ls1.setBounds(40, 70, 250, 630);
         ls2.setBounds(330, 70, 250, 630);
@@ -43,21 +46,51 @@ public class MainPanel extends Frame{
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ItemPanel ip = new ItemPanel(b2.getLabel());
+                ItemFrame ip = new ItemFrame(b2.getLabel());
             }
         });
 
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ItemPanel ip = new ItemPanel(b3.getLabel());
+                ItemFrame ip = new ItemFrame(b3.getLabel());
             }
         });
 
         b4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ItemPanel ip = new ItemPanel(b4.getLabel());
+                ItemFrame ip = new ItemFrame(b4.getLabel());
+            }
+        });
+
+
+        Panel controlPanel = new Panel();
+        controlPanel.setBackground(Color.lightGray);
+        controlPanel.setBounds(1200, 40, 250, 740);
+        controlPanel.setLayout(null);
+
+
+        Button closeButton = new Button("Close");
+        closeButton.setBounds(75, 680, 100, 40);
+        controlPanel.add(closeButton);
+
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+
+        Button addVehicleButton = new Button("Add Vehicle");
+        addVehicleButton.setBounds(10, 10, 230, 30);
+        controlPanel.add(addVehicleButton);
+
+        addVehicleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddVehicleFrame avw = new AddVehicleFrame(ls1, vp);
             }
         });
 
@@ -79,5 +112,6 @@ public class MainPanel extends Frame{
         add(b2);
         add(b3);
         add(b4);
+        add(controlPanel);
     }
 }

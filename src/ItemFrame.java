@@ -2,8 +2,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ItemPanel extends Frame{
-    public ItemPanel(String panelName) {
+public class ItemFrame extends Frame{
+    public ItemFrame(String panelName) {
         int w = 400;
         int h = 600;
 

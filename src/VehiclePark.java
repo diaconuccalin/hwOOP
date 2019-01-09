@@ -1,5 +1,5 @@
 public class VehiclePark {
-    private Vehicle[] park;
+    private Vehicle[] park = new Vehicle[300];
     private int n;
 
     VehiclePark() {
