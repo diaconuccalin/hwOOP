@@ -3,10 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainPanel extends Frame{
-    public static void main(String[] args) {
-        MainPanel mp = new MainPanel();
-    }
-
     public MainPanel() {
         int w = 1200;
         int h = 800;
