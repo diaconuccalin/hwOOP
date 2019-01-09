@@ -20,4 +20,10 @@ public class VehiclePark {
             }
         }
     }
+
+    public void printVehicles() {
+        for(int i = 0; i < n; i++) {
+            System.out.println(park[i].getType().toString() + " - " + park[i].getId());
+        }
+    }
 }

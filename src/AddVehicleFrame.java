@@ -3,21 +3,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddVehicleFrame extends Frame {
-    public AddVehicleFrame(List ls, VehiclePark vp) {
+    public AddVehicleFrame(List ls, VehiclePark vp, ErrorFrame ef) {
         int w = 250;
         int h = 150;
 
-        setVisible(true);
         setLayout(null);
         setSize(w, h);
         setTitle("Add Vehicle");
+        setLocationRelativeTo(null);
+        setVisible(true);
 
 
         Label idLabel = new Label("ID:", Label.RIGHT);
         TextField idTF = new TextField();
 
-        idLabel.setBounds(20, 50, 40, 15);
-        idTF.setBounds(65, 50, 150, 15);
+        idLabel.setBounds(20, 50, 40, 18);
+        idTF.setBounds(65, 50, 150, 18);
 
 
         Label typeLabel = new Label("Type:", Label.RIGHT);
@@ -46,22 +47,34 @@ public class AddVehicleFrame extends Frame {
             public void actionPerformed(ActionEvent e) {
                 String typeString = typeChoice.getSelectedItem();
                 String idString = idTF.getText();
-                int auxID = Integer.parseInt(idString);
+                int auxID = 0;
+                int error = 0;
 
-                ls.add(typeString + " - " + idString);
-
-                switch (typeString) {
-                    case "BUS":             Vehicle aux = new Vehicle(100, auxID, Vehicle.vehicleType.BUS);
-                                            vp.addVehicle(aux);
-                                            break;
-                    case "TROLLEYBUS":      Vehicle aux2 = new Vehicle(100, auxID, Vehicle.vehicleType.TROLLEYBUS);
-                                            vp.addVehicle(aux2);
-                                            break;
-                    case "SERVICE VEHICLE": Vehicle aux3 = new Vehicle(100, auxID, Vehicle.vehicleType.SERVICE);
-                                            vp.addVehicle(aux3);
-                                            break;
+                try {
+                    auxID = Integer.parseInt(idString);
+                } catch (NumberFormatException err) {
+                    ef.displayError("<html>ID must be integer!</html>");
+                    error = 1;
                 }
 
+                if(error == 0) {
+                    ls.add(typeString + " - " + idString);
+
+                    switch (typeString) {
+                        case "BUS":
+                            Vehicle aux = new Vehicle(100, auxID, Vehicle.vehicleType.BUS);
+                            vp.addVehicle(aux);
+                            break;
+                        case "TROLLEYBUS":
+                            Vehicle aux2 = new Vehicle(100, auxID, Vehicle.vehicleType.TROLLEYBUS);
+                            vp.addVehicle(aux2);
+                            break;
+                        case "SERVICE VEHICLE":
+                            Vehicle aux3 = new Vehicle(100, auxID, Vehicle.vehicleType.SERVICE);
+                            vp.addVehicle(aux3);
+                            break;
+                    }
+                }
                 dispose();
             }
         });

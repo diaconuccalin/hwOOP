@@ -10,6 +10,8 @@ public class MainFrame extends Frame{
 
     private VehiclePark vp = new VehiclePark();
 
+    private ErrorFrame ef = new ErrorFrame();
+
 
     public MainFrame() {
         int w = 1500;
@@ -90,15 +92,16 @@ public class MainFrame extends Frame{
         addVehicleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddVehicleFrame avw = new AddVehicleFrame(ls1, vp);
+                AddVehicleFrame avw = new AddVehicleFrame(ls1, vp, ef);
             }
         });
 
 
-        setVisible(true);
         setLayout(null);
         setSize(w, h);
         setTitle("Main Panel");
+        setLocationRelativeTo(null);
+        setVisible(true);
 
         add(l1);
         add(l2);

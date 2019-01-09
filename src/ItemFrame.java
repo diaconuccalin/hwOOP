@@ -7,10 +7,11 @@ public class ItemFrame extends Frame{
         int w = 400;
         int h = 600;
 
-        setVisible(true);
         setLayout(null);
         setSize(w, h);
         setTitle(panelName);
+        setLocationRelativeTo(null);
+        setVisible(true);
 
 
         Label l1 = new Label("Info", Label.CENTER);
