@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainPanel extends Frame{
     public static void main(String[] args) {
@@ -42,10 +44,32 @@ public class MainPanel extends Frame{
         b3.setBounds(620, 740, 250, 40);
         b4.setBounds(910, 740, 250, 40);
 
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ItemPanel ip = new ItemPanel(b2.getLabel());
+            }
+        });
+
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ItemPanel ip = new ItemPanel(b3.getLabel());
+            }
+        });
+
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ItemPanel ip = new ItemPanel(b4.getLabel());
+            }
+        });
+
 
         setVisible(true);
         setLayout(null);
         setSize(w, h);
+        setTitle("Main Panel");
 
         add(l1);
         add(l2);
