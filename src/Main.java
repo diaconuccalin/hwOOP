@@ -43,6 +43,7 @@ public class Main {
         ae.addEmployee(new Employee("Diaconu Calin"));
         ae.addEmployee(new Employee("Girip Cristian"));
 
-        MainFrame mp = new MainFrame(vp, ar, as, ae, d1, d2, d3);
+        MainFrame mf = new MainFrame(vp, ar, as, ae, d1, d2, d3);
+        TimeControlFrame tcf = new TimeControlFrame(mf);
     }
 }

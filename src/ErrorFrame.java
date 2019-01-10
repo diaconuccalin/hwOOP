@@ -7,9 +7,11 @@ public class ErrorFrame extends Frame {
     private JLabel errorMessage = new JLabel("");
 
     public ErrorFrame() {
+        int w = 250;
+        int h = 160;
         setTitle("ERROR!");
         setVisible(false);
-        setSize(250,160);
+        setSize(w, h);
         setLayout(null);
         setLocationRelativeTo(null);
 
