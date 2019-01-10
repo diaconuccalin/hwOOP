@@ -9,8 +9,8 @@ public class AllEmployees {
 
     public void removeEmployee(String removeName) {
         for(int i = 0; i < n; i++) {
-            if(all[i].getName() == removeName) {
-                all[i] = all[n];
+            if(all[i].getName().equals(removeName)) {
+                all[i] = all[n - 1];
                 n--;
                 break;
             }
@@ -21,5 +21,22 @@ public class AllEmployees {
         for(int i = 0; i < n; i++) {
             System.out.println(all[i].getName());
         }
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public Employee[] getAll() {
+        return all;
+    }
+
+    public Employee getEmployee(String name) {
+        for(int i = 0; i < n; i++) {
+            if(all[i].getName().equals(name))
+                return all[i];
+        }
+
+        return null;
     }
 }

@@ -25,4 +25,16 @@ public class Vehicle {
     public String getType() {
         return type.toString();
     }
+
+    public boolean isMalfunction() {
+        return malfunction;
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setMalfunction(boolean malfunction) {
+        this.malfunction = malfunction;
+    }
 }

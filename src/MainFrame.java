@@ -1,6 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class MainFrame extends Frame{
     private List ls1 = new List();
@@ -11,7 +10,7 @@ public class MainFrame extends Frame{
     private ErrorFrame ef = new ErrorFrame();
 
 
-    public MainFrame(VehiclePark vp, AllRoutes ar, AllStops as, AllEmployees ae) {
+    public MainFrame(AllVehicles vp, AllRoutes ar, AllStops as, AllEmployees ae, Depot d1, Depot d2, Depot d3) {
         int w = 800;
         int h = 500;
 
@@ -27,16 +26,21 @@ public class MainFrame extends Frame{
         l4.setBounds(488, 40, 136, 20);
 
 
-        ls1.setBounds(20, 65, 136, 380);
-        ls2.setBounds(176, 65, 136, 380);
-        ls3.setBounds(332, 65, 136, 380);
-        ls4.setBounds(488, 65, 136, 380);
+        ls1.setBounds(20, 65, 136, 350);
+        ls2.setBounds(176, 65, 136, 350);
+        ls3.setBounds(332, 65, 136, 350);
+        ls4.setBounds(488, 65, 136, 350);
+
+        ls1.select(0);
+        ls2.select(0);
+        ls3.select(0);
+        ls4.select(0);
 
 
         Label b1 = new Label("Depots");
-        Button b2 = new Button("Depot 1");
-        Button b3 = new Button("Depot 2");
-        Button b4 = new Button("Depot 3");
+        Button b2 = new Button(d1.getName());
+        Button b3 = new Button(d2.getName());
+        Button b4 = new Button(d3.getName());
 
         b1.setBounds(20, 460, 136, 20);
         b2.setBounds(176, 460, 136, 20);
@@ -46,21 +50,21 @@ public class MainFrame extends Frame{
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ItemFrame ip = new ItemFrame(b2.getLabel());
+                DepotFrame ip = new DepotFrame(d1);
             }
         });
 
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ItemFrame ip = new ItemFrame(b3.getLabel());
+                DepotFrame ip = new DepotFrame(d2);
             }
         });
 
         b4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ItemFrame ip = new ItemFrame(b4.getLabel());
+                DepotFrame ip = new DepotFrame(d3);
             }
         });
 
@@ -118,6 +122,110 @@ public class MainFrame extends Frame{
         });
 
 
+        int vn = vp.getN();
+        Vehicle[] allV = vp.getPark();
+        for(int i = 0; i < vn; i++) {
+            ls1.add(allV[i].getType() + " - " + allV[i].getId());
+        }
+
+        int sn = as.getN();
+        Stop[] allS = as.getAll();
+        for(int i = 0; i < sn; i++) {
+            ls2.add(allS[i].getName());
+        }
+
+        int rn = ar.getN();
+        Route[] allR = ar.getAll();
+        for(int i = 0; i < rn; i++) {
+            ls3.add(allR[i].getId() + "");
+        }
+
+        int en = ae.getN();
+        Employee[] allE = ae.getAll();
+        for(int i = 0; i < en; i++) {
+            ls4.add(allE[i].getName());
+        }
+
+
+        Button seeVehicleDetails = new Button("Vehicle Details");
+        Button seeStopDetails = new Button("Stop Details");
+        Button seeRouteDetails = new Button("Route Details");
+        Button seeEmployeeDetails = new Button("Employee Details");
+
+        seeVehicleDetails.setBounds(20, 420, 136, 20);
+        seeStopDetails.setBounds(176, 420, 136, 20);
+        seeRouteDetails.setBounds(332, 420, 136, 20);
+        seeEmployeeDetails.setBounds(488, 420, 136, 20);
+
+
+        seeVehicleDetails.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String selectedVehicle = ls1.getSelectedItem();
+                    StringBuilder selVehID = new StringBuilder();
+
+                    boolean found = false;
+
+                    for (int i = 0; i < selectedVehicle.length(); i++) {
+                        if (selectedVehicle.charAt(i) == '-') {
+                            found = true;
+                            i += 2;
+                        }
+
+                        if (found) {
+                            selVehID.append(selectedVehicle.charAt(i));
+                        }
+                    }
+
+                    Vehicle toSee = vp.findVehicle(Integer.parseInt(selVehID.toString()));
+                    VehicleFrame vf = new VehicleFrame(toSee, vp, ls1);
+                } catch (NullPointerException npe) {
+                    ef.displayError("No item selected!");
+                }
+            }
+        });
+
+        seeStopDetails.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String selectedStop = ls2.getSelectedItem();
+                    Stop stopToSee = as.getStop(selectedStop);
+                    StopFrame sf = new StopFrame(stopToSee);
+                } catch (NullPointerException npe) {
+                    ef.displayError("No item selected!");
+                }
+            }
+        });
+
+        seeRouteDetails.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String selectedRoute = ls3.getSelectedItem();
+                    Route routeToSee = ar.getRoute(selectedRoute);
+                    RouteFrame rf = new RouteFrame(routeToSee, as, ef, ar, ls3);
+                } catch(NullPointerException | NumberFormatException npe) {
+                    ef.displayError("No item selected!");
+                }
+            }
+        });
+
+        seeEmployeeDetails.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String selectedEmployee = ls4.getSelectedItem();
+                    Employee employeeToSee = ae.getEmployee(selectedEmployee);
+                    EmployeeFrame ef = new EmployeeFrame(employeeToSee, ls4, ae);
+                } catch (NullPointerException npe) {
+                    ef.displayError("No item selected!");
+                }
+            }
+        });
+
+
         setLayout(null);
         setSize(w, h);
         setTitle("Main Panel");
@@ -137,5 +245,9 @@ public class MainFrame extends Frame{
         add(b3);
         add(b4);
         add(controlPanel);
+        add(seeVehicleDetails);
+        add(seeEmployeeDetails);
+        add(seeRouteDetails);
+        add(seeStopDetails);
     }
 }

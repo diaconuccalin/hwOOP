@@ -25,11 +25,11 @@ public class AddRouteS2 extends Frame {
         for(int i = 0; i < n; i++) {
             boolean found = false;
             for(int j = 0; j < nr; j++) {
-                if(allRoute[j].getName() == all[i].getName())
+                if(allRoute[j].getName().equals(all[i].getName()))
                     found = true;
             }
 
-            if(found == false) {
+            if(!found) {
                 stopChoice.add(all[i].getName());
             }
         }
@@ -75,5 +75,10 @@ public class AddRouteS2 extends Frame {
         add(addButton);
         add(cancelButton);
         add(doneButton);
+
+        if((n - nr) == 0) {
+            ls.add(r.getId() + "");
+            dispose();
+        }
     }
 }

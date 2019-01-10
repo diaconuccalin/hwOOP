@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddVehicleFrame extends Frame {
-    public AddVehicleFrame(List ls, VehiclePark vp, ErrorFrame ef) {
+    public AddVehicleFrame(List ls, AllVehicles vp, ErrorFrame ef) {
         int w = 250;
         int h = 150;
 

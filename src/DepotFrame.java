@@ -1,15 +1,16 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ItemFrame extends Frame{
-    public ItemFrame(String panelName) {
+public class DepotFrame extends Frame{
+    public DepotFrame(Depot dep) {
         int w = 400;
         int h = 600;
 
         setLayout(null);
         setSize(w, h);
-        setTitle(panelName);
+        setTitle("Depot: " + dep.getName());
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -24,14 +25,26 @@ public class ItemFrame extends Frame{
         Panel p1 = new Panel();
         Panel p2 = new Panel();
 
-        p1.setBackground(Color.lightGray);
-        p2.setBackground(Color.lightGray);
+        Color lightestGray = new Color(230, 230, 230);
+
+        p1.setBackground(lightestGray);
+        p2.setBackground(lightestGray);
 
         p1.setBounds(20, 70, 170, 480);
         p2.setBounds(210, 70, 170, 480);
 
+        p1.setLayout(null);
+        p2.setLayout(null);
 
-        Button cancelButton = new Button("Cancel");
+        Label nameLabel = new Label("Name: " + dep.getName(), Label.LEFT);
+        p1.add(nameLabel);
+        nameLabel.setBounds(2, 0, 170, 18);
+
+        Label capacityLabel = new Label("Capacity: " + dep.getCapacity(), Label.LEFT);
+        p1.add(capacityLabel);
+        capacityLabel.setBounds(2, 15, 170, 18);
+
+        Button cancelButton = new Button("Close");
         cancelButton.setBounds(175, 560, 50, 20);
 
         cancelButton.addActionListener(new ActionListener() {

@@ -13,8 +13,8 @@ public class AllStops {
 
     public void removeStop(String name) {
         for(int i = 0; i < n; i++) {
-            if(all[i].getName() == name) {
-                all[i] = all[n];
+            if(all[i].getName().equals(name)) {
+                all[i] = all[n - 1];
                 n--;
                 break;
             }
@@ -27,5 +27,19 @@ public class AllStops {
 
     public Stop[] getAll() {
         return all;
+    }
+
+    public Stop getStop(String name) {
+        for(int i = 0; i < n; i++) {
+            if(all[i].getName().equals(name)) {
+                return all[i];
+            }
+        }
+
+        return null;
+    }
+
+    public Stop getStop(int index) {
+        return all[index];
     }
 }
