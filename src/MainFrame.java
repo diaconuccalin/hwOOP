@@ -11,7 +11,7 @@ public class MainFrame extends Frame{
     private ErrorFrame ef = new ErrorFrame();
 
 
-    public MainFrame(VehiclePark vp, AllRoutes ar, AllStops as) {
+    public MainFrame(VehiclePark vp, AllRoutes ar, AllStops as, AllEmployees ae) {
         int w = 800;
         int h = 500;
 
@@ -103,6 +103,17 @@ public class MainFrame extends Frame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddRouteS1 ars = new AddRouteS1(ls3, ar, ef, as);
+            }
+        });
+
+        Button addEmployeeButton = new Button("Add Employee");
+        addEmployeeButton.setBounds(8, 60, 120, 20);
+        controlPanel.add(addEmployeeButton);
+
+        addEmployeeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddEmployeeFrame aef = new AddEmployeeFrame(ls4, ae);
             }
         });
 
