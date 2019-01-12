@@ -8,9 +8,6 @@ public class Main {
     private static Depot d2 = new Depot("Unirii", 210);
     private static Depot d3 = new Depot("Zorilor", 120);
 
-    private static Route r1 = new Route(35);
-    private static Route r2 = new Route(40);
-
     public static void main(String[] args) {
         as.addStop(new Stop("Taberei"));
         as.addStop(new Stop("Calea Floresti"));
@@ -247,6 +244,9 @@ public class Main {
         vp.addVehicle(new Vehicle(100, 845, Vehicle.vehicleType.BUS));
         vp.addVehicle(new Vehicle(100, 756, Vehicle.vehicleType.BUS));
         vp.addVehicle(new Vehicle(100, 231, Vehicle.vehicleType.BUS));
+
+        Route r1 = new Route(35);
+        Route r2 = new Route(40);
 
         r1.addStop(as.getStop(2));
         r1.addStop(as.getStop(1));
