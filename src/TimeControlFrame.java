@@ -10,7 +10,7 @@ public class TimeControlFrame extends Frame {
         setSize(w, h);
         setLayout(null);
         Point p = mf.getLocation();
-        setLocation(p.x + 830, p.y);
+        setLocation(p.x + 790, p.y);
 
         Button btn1s = new Button("> 1 minute");
         btn1s.setBounds(75, 45, 100, 30);
