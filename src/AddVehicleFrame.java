@@ -58,22 +58,24 @@ public class AddVehicleFrame extends Frame {
                 }
 
                 if(error == 0) {
-                    ls.add(typeString + " - " + idString);
+                    int index = 0;
 
                     switch (typeString) {
                         case "BUS":
-                            Vehicle aux = new Vehicle(100, auxID, Vehicle.vehicleType.BUS);
-                            vp.addVehicle(aux);
+                            Vehicle aux = new Vehicle(auxID, Vehicle.vehicleType.BUS);
+                            index = vp.addVehicle(aux);
                             break;
                         case "TROLLEYBUS":
-                            Vehicle aux2 = new Vehicle(100, auxID, Vehicle.vehicleType.TROLLEYBUS);
-                            vp.addVehicle(aux2);
+                            Vehicle aux2 = new Vehicle(auxID, Vehicle.vehicleType.TROLLEYBUS);
+                            index = vp.addVehicle(aux2);
                             break;
                         case "SERVICE VEHICLE":
-                            Vehicle aux3 = new Vehicle(100, auxID, Vehicle.vehicleType.SERVICE);
-                            vp.addVehicle(aux3);
+                            Vehicle aux3 = new Vehicle(auxID, Vehicle.vehicleType.SERVICE);
+                            index = vp.addVehicle(aux3);
                             break;
                     }
+
+                    ls.add(typeString + " - " + idString, index);
                 }
                 dispose();
             }

@@ -6,9 +6,20 @@ public class AllVehicles {
         n = 0;
     }
 
-    public void addVehicle(Vehicle v) {
+    public int addVehicle(Vehicle v) {
+        for(int i = 0; i < n; i++) {
+            if((v.getType() + v.getId()).compareTo(park[i].getType()+park[i].getId()) < 0) {
+                if (n - i >= 0) System.arraycopy(park, i, park, i + 1, n - i);
+
+                park[i] = v;
+                n++;
+                return i;
+            }
+        }
+
         park[n] = v;
         n++;
+        return n-1;
     }
 
     public void removeVehicle(int id) {

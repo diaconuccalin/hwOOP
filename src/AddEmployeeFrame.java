@@ -38,8 +38,9 @@ public class AddEmployeeFrame extends Frame {
                 String inp = tf.getText();
                 Employee emp = new Employee(inp);
 
-                ls.add(inp);
-                ae.addEmployee(emp);
+
+                int index = ae.addEmployee(emp);
+                ls.add(inp, index);
 
                 dispose();
             }

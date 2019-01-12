@@ -2,9 +2,20 @@ public class AllEmployees {
     private Employee[] all = new Employee[500];
     private int n;
 
-    public void addEmployee(Employee e) {
+    public int addEmployee(Employee e) {
+        for(int i = 0; i < n; i++) {
+            if(e.getName().compareTo(all[i].getName()) < 0) {
+                if (n - i >= 0) System.arraycopy(all, i, all, i + 1, n - i);
+
+                all[i] = e;
+                n++;
+                return i;
+            }
+        }
+
         all[n] = e;
         n++;
+        return n-1;
     }
 
     public void removeEmployee(String removeName) {

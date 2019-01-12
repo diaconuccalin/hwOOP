@@ -53,7 +53,7 @@ public class AddRouteS2 extends Frame {
         doneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ls.add(r.getId() + "");
+                ls.add(r.getId() + "", ar.getIndex(r.getId()));
                 dispose();
             }
         });

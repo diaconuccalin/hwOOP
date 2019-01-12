@@ -6,9 +6,18 @@ public class AllRoutes {
         n = 0;
     }
 
-    public void addRoute(Route r) {
+    public int addRoute(Route r) {
+        for(int i = 0; i < n; i++) {
+            if(all[i].getId() > r.getId()) {
+                if (n - i >= 0) System.arraycopy(all, i, all, i + 1, n - i);
+                all[i] = r;
+                n++;
+                return i;
+            }
+        }
         all[n] = r;
         n++;
+        return n-1;
     }
 
     public void removeRoute(int id) {
@@ -52,5 +61,13 @@ public class AllRoutes {
         }
 
         return null;
+    }
+
+    public int getIndex(int id) {
+        for(int i = 0; i < n; i++) {
+            if(all[i].getId() == id)
+                return i;
+        }
+        return -1;
     }
 }

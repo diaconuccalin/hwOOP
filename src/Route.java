@@ -1,7 +1,7 @@
 public class Route {
     private int id;
     private int n;
-    private Stop[] stops = new Stop[30];
+    private Stop[] stops = new Stop[200];
 
     public Route(int routeId) {
         id = routeId;

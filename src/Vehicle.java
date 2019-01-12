@@ -10,8 +10,8 @@ public class Vehicle {
     private vehicleType type;
     private boolean malfunction;
 
-    Vehicle(int fuel, int id, vehicleType type) {
-        this.fuel = fuel;
+    Vehicle(int id, vehicleType type) {
+        fuel = 100;
         this.id = id;
         this.type = type;
 

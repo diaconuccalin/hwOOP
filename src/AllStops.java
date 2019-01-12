@@ -6,9 +6,19 @@ public class AllStops {
         n = 0;
     }
 
-    public void addStop(Stop s) {
+    public int addStop(Stop s) {
+        for(int i = 0; i < n; i++) {
+            if(s.getName().compareTo(all[i].getName()) < 0) {
+                if (n - i >= 0) System.arraycopy(all, i, all, i + 1, n - i);
+
+                all[i] = s;
+                n++;
+                return i;
+            }
+        }
         all[n] = s;
         n++;
+        return n - 1;
     }
 
     public void removeStop(String name) {
@@ -36,7 +46,7 @@ public class AllStops {
             }
         }
 
-        return null;
+        return all[0];
     }
 
     public Stop getStop(int index) {
