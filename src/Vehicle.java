@@ -10,6 +10,14 @@ public class Vehicle {
     private vehicleType type;
     private boolean malfunction;
 
+    private int timeToDestination;
+    private Stop destination;
+    private Route activeRoute;
+    private Employee driver;
+
+    private Depot currentDepot;
+    private Stop currentStop;
+
     Vehicle(int id, vehicleType type) {
         fuel = 100;
         this.id = id;
@@ -36,5 +44,16 @@ public class Vehicle {
 
     public void setMalfunction(boolean malfunction) {
         this.malfunction = malfunction;
+    }
+
+    public void passTime(int time) {
+        timeToDestination -= time;
+    }
+
+    public void sendOnRoute(Route r, Employee d) {
+        activeRoute = r;
+        driver = d;
+        destination = r.getFirstStop();
+//        timeToDestination =                   build a matrix with all possible times and get the time from there
     }
 }

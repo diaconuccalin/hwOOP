@@ -15,9 +15,9 @@ public class ErrorFrame extends Frame {
         setLayout(null);
         setLocationRelativeTo(null);
 
-        Button cancelButton = new Button("Cancel");
+        Button cancelButton = new Button("Close");
 
-        errorMessage.setHorizontalAlignment(JLabel.CENTER);
+        errorMessage.setHorizontalAlignment(SwingConstants.CENTER);
         errorMessage.setBounds(20, 30, 210, 70);
 
         cancelButton.setBounds(90, 110, 60, 25);

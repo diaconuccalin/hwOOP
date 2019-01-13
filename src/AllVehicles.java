@@ -55,4 +55,10 @@ public class AllVehicles {
 
         return null;
     }
+
+    public void passTime(int time) {
+        for(int i = 0; i < n; i++) {
+            park[i].passTime(time);
+        }
+    }
 }

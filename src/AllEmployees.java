@@ -50,4 +50,10 @@ public class AllEmployees {
 
         return null;
     }
+
+    public void passTime (int time, ErrorFrame ef) {
+        for(int i = 0; i < n; i++) {
+            all[i].passTime(time, ef);
+        }
+    }
 }

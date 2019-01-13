@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Main {
     private static AllVehicles vp = new AllVehicles();
     private static AllRoutes ar = new AllRoutes();
@@ -799,6 +801,7 @@ public class Main {
         }
 
         MainFrame mf = new MainFrame(vp, ar, as, ae, d1, d2, d3);
+        mf.run();
         TimeControlFrame tcf = new TimeControlFrame(mf);
     }
 }

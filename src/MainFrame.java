@@ -9,8 +9,25 @@ public class MainFrame extends Frame{
 
     private ErrorFrame ef = new ErrorFrame();
 
+    private AllVehicles vp;
+    private AllRoutes ar;
+    private AllStops as;
+    private AllEmployees ae;
+    private Depot d1;
+    private Depot d2;
+    private Depot d3;
 
     public MainFrame(AllVehicles vp, AllRoutes ar, AllStops as, AllEmployees ae, Depot d1, Depot d2, Depot d3) {
+        this.vp = vp;
+        this.ar = ar;
+        this. as = as;
+        this.ae = ae;
+        this.d1 = d1;
+        this.d2 = d2;
+        this.d3 = d3;
+    }
+
+    public void run() {
         int w = 800;
         int h = 500;
 
@@ -249,5 +266,10 @@ public class MainFrame extends Frame{
         add(seeEmployeeDetails);
         add(seeRouteDetails);
         add(seeStopDetails);
+    }
+
+    public void passTime(int time) {
+        vp.passTime(time);
+        ae.passTime(time, ef);
     }
 }

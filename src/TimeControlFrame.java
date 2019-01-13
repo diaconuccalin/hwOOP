@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TimeControlFrame extends Frame {
     public TimeControlFrame(MainFrame mf) {
@@ -15,5 +17,12 @@ public class TimeControlFrame extends Frame {
         Button btn1s = new Button("1 minute   >");
         btn1s.setBounds(75, 45, 100, 30);
         add(btn1s);
+
+        btn1s.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mf.passTime(1);
+            }
+        });
     }
 }

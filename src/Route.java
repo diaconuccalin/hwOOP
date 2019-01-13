@@ -24,4 +24,6 @@ public class Route {
     public int getN() {
         return n;
     }
+
+    public Stop getFirstStop() {return stops[0];}
 }
