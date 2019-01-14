@@ -2,7 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class VehicleFrame extends Frame {
-    public VehicleFrame(Vehicle v, AllVehicles av, List ls, AllRoutes ar) {
+    Label typeLabel = new Label();
+    Label idLabel = new Label();
+    Label fuelLabel = new Label();
+    Label malfunctionLabel = new Label();
+    Label routeLabel = new Label();
+    Label depotLabel = new Label();
+
+    public VehicleFrame(Vehicle v, AllVehicles av, List ls, AllRoutes ar, AllEmployees ae, int[][] distances) {
         int w = 400;
         int h = 600;
 
@@ -34,22 +41,31 @@ public class VehicleFrame extends Frame {
         p1.setLayout(null);
         p2.setLayout(null);
 
-        Label typeLabel = new Label("Type: " + v.getType(), Label.LEFT);
+        typeLabel.setAlignment(Label.LEFT);
         p1.add(typeLabel);
         typeLabel.setBounds(2, 0, 170, 18);
 
-        Label idLabel = new Label("ID: " + v.getId(), Label.LEFT);
+        idLabel.setAlignment(Label.LEFT);
         p1.add(idLabel);
         idLabel.setBounds(2, 15, 170, 18);
 
-        Label fuelLabel = new Label("Fuel: " + v.getFuel(), Label.LEFT);
+        fuelLabel.setAlignment(Label.LEFT);
         p1.add(fuelLabel);
         fuelLabel.setBounds(2, 30, 170, 18);
 
-        Label malfunctionLabel = new Label("Malfunction: " + (v.isMalfunction() ? "YES" : "NO"));
+        malfunctionLabel.setAlignment(Label.LEFT);
         p1.add(malfunctionLabel);
         malfunctionLabel.setBounds(2, 45, 170, 18);
 
+        routeLabel.setAlignment(Label.LEFT);
+        p1.add(routeLabel);
+        routeLabel.setBounds(2, 60, 170, 18);
+
+        depotLabel.setAlignment(Label.LEFT);
+        p1.add(depotLabel);
+        depotLabel.setBounds(2, 75, 170, 18);
+
+        updateLabels(v);
 
         Button removeVehicle = new Button("Remove Vehicle");
         p2.add(removeVehicle);
@@ -98,40 +114,44 @@ public class VehicleFrame extends Frame {
         sendOnRoute.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Flag yes = new Flag(false);
+                ChooseDestinationFrame crf = new ChooseDestinationFrame(ar, v, ae, distances);
 
-                ChooseRouteFrame crf = new ChooseRouteFrame(ar, v);
+                crf.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {
 
-//                Flag yes = new Flag(false);
-//                SureFrame sf = new SureFrame(av, v.getId(), ls, yes);
-//
-//                sf.addWindowListener(new WindowListener() {
-//                    @Override
-//                    public void windowOpened(WindowEvent e) {}
-//
-//                    @Override
-//                    public void windowClosed(WindowEvent e) {
-//                        if(yes.getAux()) {
-//                            ls.select(0);
-//                            dispose();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void windowClosing(WindowEvent e) {}
-//
-//                    @Override
-//                    public void windowIconified(WindowEvent e) {}
-//
-//                    @Override
-//                    public void windowDeiconified(WindowEvent e) {}
-//
-//                    @Override
-//                    public void windowActivated(WindowEvent e) {}
-//
-//                    @Override
-//                    public void windowDeactivated(WindowEvent e) {}
-//                });
+                    }
+
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        updateLabels(v);
+                    }
+
+                    @Override
+                    public void windowIconified(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowActivated(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {
+
+                    }
+                });
             }
         });
 
@@ -151,5 +171,26 @@ public class VehicleFrame extends Frame {
         add(p1);
         add(p2);
         add(cancelButton);
+    }
+
+    public void updateLabels(Vehicle v) {
+        typeLabel.setText("Type: " + v.getType());
+        idLabel.setText("ID: " + v.getId());
+        fuelLabel.setText("Fuel: " + v.getFuel());
+        malfunctionLabel.setText("Malfunction: " + (v.isMalfunction() ? "YES" : "NO"));
+
+        if(v.getActiveRoute() != null) {
+            routeLabel.setText("Route: " + v.getActiveRoute().getId());
+        }
+        else {
+            routeLabel.setText("Route: NONE");
+        }
+
+        if(v.getCurrentDepot() != null) {
+            depotLabel.setText("Depot: " + v.getCurrentDepot().getName());
+        }
+        else {
+            depotLabel.setText("Depot: NONE");
+        }
     }
 }

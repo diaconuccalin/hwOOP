@@ -2,8 +2,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ChooseRouteFrame extends Frame {
-    public ChooseRouteFrame(AllRoutes ar, Vehicle v) {
+public class ChooseDestinationFrame extends Frame {
+    public ChooseDestinationFrame(AllRoutes ar, Vehicle v, AllEmployees ae, int[][] distances) {
         int w = 250;
         int h = 150;
 
@@ -41,8 +41,12 @@ public class ChooseRouteFrame extends Frame {
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int aux = Integer.parseInt(routes.getItem(routes.getSelectedIndex()));
-             //   v.sendOnRoute(ar.getRoute(aux));
+                v.sendOnRoute(ar.getRoute(routes.getSelectedItem()), ae, distances);
+                if(v.getCurrentDepot() != null) {
+                    v.getCurrentDepot().removeVehicle(v);
+                }
+                v.setCurrentDepot(null);
+                dispose();
             }
         });
     }

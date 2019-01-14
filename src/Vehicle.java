@@ -26,6 +26,8 @@ public class Vehicle {
         this.type = type;
 
         malfunction = false;
+
+        activeRoute = null;
     }
 
     public int getId() {
@@ -55,15 +57,14 @@ public class Vehicle {
         }
     }
 
-    public void sendOnRoute(Route r, AllEmployees ae, int[][] time) {
+    public void sendOnRoute(Route r, AllEmployees ae, int[][] distances) {
         activeRoute = r;
         driver = setDriver(ae);
         destination = r.getFirstStop();
-        timeToDestination = time[destination.getId()][r.getFirstStop().getId()];
+        timeToDestination = distances[destination.getId()][r.getFirstStop().getId()];
     }
 
     public void sendToDepot(Depot d, int[][] distances){
-
         timeToDestination = distances[destination.getId()][d.getId()];
         destination = d;
 
@@ -81,5 +82,17 @@ public class Vehicle {
             a = random.nextInt(150);
         }
        return driver = e[a];
+    }
+
+    public Route getActiveRoute() {
+        return activeRoute;
+    }
+
+    public void setCurrentDepot(Depot currentDepot) {
+        this.currentDepot = currentDepot;
+    }
+
+    public Depot getCurrentDepot() {
+        return currentDepot;
     }
 }

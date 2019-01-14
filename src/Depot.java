@@ -15,4 +15,10 @@ public class Depot extends Place{
     public void addVehicle(Vehicle v) {
         avd.addVehicle(v);
     }
+
+    public void removeVehicle(Vehicle v) {avd.removeVehicle(v.getId());}
+
+    public AllVehicles getAvd() {
+        return avd;
+    }
 }

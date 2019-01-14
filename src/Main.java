@@ -815,14 +815,17 @@ public class Main {
 
         for(int i = 0; i < 110; i++) {
             d1.addVehicle(v[i]);
+            v[i].setCurrentDepot(d1);
         }
 
         for(int i = 110; i < 150; i++) {
             d2.addVehicle(v[i]);
+            v[i].setCurrentDepot(d2);
         }
 
         for(int i = 150; i < 167; i++) {
             d3.addVehicle(v[i]);
+            v[i].setCurrentDepot(d3);
         }
 
         d1.addVehicle(v[167]);
@@ -830,18 +833,29 @@ public class Main {
         d1.addVehicle(v[169]);
         d1.addVehicle(v[170]);
 
+        v[167].setCurrentDepot(d1);
+        v[168].setCurrentDepot(d1);
+        v[169].setCurrentDepot(d1);
+        v[170].setCurrentDepot(d1);
+
         d2.addVehicle(v[171]);
         d2.addVehicle(v[172]);
 
+        v[171].setCurrentDepot(d2);
+        v[172].setCurrentDepot(d2);
+
         d3.addVehicle(v[173]);
-        d3.addVehicle(v[174]);
+
+        v[173].setCurrentDepot(d3);
 
         for(int i = 174; i < 205; i++) {
             d1.addVehicle(v[i]);
+            v[i].setCurrentDepot(d1);
         }
 
-        for(int i = 205; i < 218; i++) {
-            d3.addVehicle(v[i]);
+        for(int i = 205; i < 227; i++) {
+            d2.addVehicle(v[i]);
+            v[i].setCurrentDepot(d2);
         }
 
         Stop[] aux = as.getAll();
