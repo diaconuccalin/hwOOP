@@ -104,7 +104,16 @@ public class ChooseDestinationFrame extends Frame {
                                     v.setCurrentDepot(d3);
                                     break;
                 }
+
                 v.setActiveRoute(null);
+
+                if(v.getDriver() != null) {
+                    v.getDriver().setOnRoad(false);
+                    v.getDriver().setVehicle(null);
+                }
+
+                v.removeDriver();
+
                 dispose();
             }
         });

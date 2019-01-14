@@ -15,16 +15,31 @@ public class Employee {
     }
 
     public void passTime(int time, ErrorFrame ef) {
-        activeTime -= time;
+        if(onRoad) {
+            activeTime -= time;
 
-        if(activeTime <= 0) {
-            ef.displayError("<html><div align = \"center\">Active time limit exceeded on employee " + name + "!</div></html>");
-        }else if(activeTime < 15) {
-            ef.displayError("<html><div align = \"center\">15 minutes left for employee " + name + "!</div></html>");
+            if (activeTime <= 0) {
+                ef.displayError("<html><div align = \"center\">Active time limit exceeded on employee " + name + "<br>on vehicle " + vehicle.getId() + "!</div></html>");
+            } else if (activeTime < 15) {
+                ef.displayError("<html><div align = \"center\">15 minutes left for employee " + name + " on vehicle " + vehicle.getId() + "!</div></html>");
+            }
         }
     }
 
     public boolean isOnRoad() {
         return onRoad;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        activeTime = 180;
+        this.vehicle = vehicle;
+    }
+
+    public void setOnRoad(boolean onRoad) {
+        this.onRoad = onRoad;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 }

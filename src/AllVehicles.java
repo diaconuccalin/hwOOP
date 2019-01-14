@@ -56,9 +56,9 @@ public class AllVehicles {
         return null;
     }
 
-    public void passTime(int time) {
+    public void passTime(int time, int[][] distances) {
         for(int i = 0; i < n; i++) {
-            park[i].passTime(time);
+            park[i].passTime(time, distances);
         }
     }
 

@@ -485,7 +485,7 @@ public class MainFrame extends Frame{
     }
 
     public void passTime(int time) {
-        vp.passTime(time);
+        vp.passTime(time, distances);
         ae.passTime(time, ef);
     }
 }

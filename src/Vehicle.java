@@ -6,7 +6,6 @@ public class Vehicle {
         SERVICE
     }
 
-    private int fuel;
     private int id;
     private vehicleType type;
     private boolean malfunction;
@@ -17,17 +16,15 @@ public class Vehicle {
     private Employee driver;
 
     private Depot currentDepot;
-    private Stop currentStop;
-    private Route currentRoute;
 
     Vehicle(int id, vehicleType type) {
-        fuel = 100;
         this.id = id;
         this.type = type;
 
         malfunction = false;
 
         activeRoute = null;
+        timeToDestination = 0;
     }
 
     public int getId() {
@@ -42,18 +39,17 @@ public class Vehicle {
         return malfunction;
     }
 
-    public int getFuel() {
-        return fuel;
-    }
-
     public void setMalfunction(boolean malfunction) {
         this.malfunction = malfunction;
     }
 
-    public void passTime(int time) {
-        timeToDestination -= time;
-        if(timeToDestination == 0){
-            destination = currentRoute.getNextStop(currentStop);
+    public void passTime(int time, int[][] distances) {
+        if(timeToDestination >= 0) {
+            timeToDestination -= time;
+        }
+        if(timeToDestination == 0 && activeRoute != null){
+            timeToDestination = distances[destination.getId()][activeRoute.getNextStop(destination).getId()];
+            destination = activeRoute.getNextStop(destination);
         }
     }
 
@@ -61,11 +57,11 @@ public class Vehicle {
         activeRoute = r;
         driver = setDriver(ae);
         destination = r.getFirstStop();
-        timeToDestination = distances[destination.getId()][r.getFirstStop().getId()];
+        timeToDestination += distances[destination.getId()][r.getFirstStop().getId()];
     }
 
     public void sendToDepot(Depot d, int[][] distances){
-        timeToDestination = distances[destination.getId()][d.getId()];
+        timeToDestination += distances[destination.getId()][d.getId()];
         destination = d;
         activeRoute = null;
     }
@@ -73,7 +69,6 @@ public class Vehicle {
     Random random = new Random();
 
     public Employee setDriver(AllEmployees ae) {
-
         Employee[] e = ae.getAll();
         int a = random.nextInt(150);
 
@@ -81,7 +76,17 @@ public class Vehicle {
         {
             a = random.nextInt(150);
         }
+
+        e[a].setOnRoad(true);
+        e[a].setVehicle(this);
+
+        System.out.println(e[a].getVehicle().getId());
+
        return driver = e[a];
+    }
+
+    public void removeDriver() {
+        driver = null;
     }
 
     public Route getActiveRoute() {
@@ -98,5 +103,9 @@ public class Vehicle {
 
     public void setActiveRoute(Route activeRoute) {
         this.activeRoute = activeRoute;
+    }
+
+    public Employee getDriver() {
+        return driver;
     }
 }

@@ -49,10 +49,6 @@ public class VehicleFrame extends Frame {
         p1.add(idLabel);
         idLabel.setBounds(2, 15, 170, 18);
 
-        fuelLabel.setAlignment(Label.LEFT);
-        p1.add(fuelLabel);
-        fuelLabel.setBounds(2, 30, 170, 18);
-
         malfunctionLabel.setAlignment(Label.LEFT);
         p1.add(malfunctionLabel);
         malfunctionLabel.setBounds(2, 45, 170, 18);
@@ -63,7 +59,7 @@ public class VehicleFrame extends Frame {
 
         depotLabel.setAlignment(Label.LEFT);
         p1.add(depotLabel);
-        depotLabel.setBounds(2, 75, 170, 18);
+        depotLabel.setBounds(2, 30, 170, 18);
 
         updateLabels(v);
 
@@ -224,7 +220,6 @@ public class VehicleFrame extends Frame {
     public void updateLabels(Vehicle v) {
         typeLabel.setText("Type: " + v.getType());
         idLabel.setText("ID: " + v.getId());
-        fuelLabel.setText("Fuel: " + v.getFuel());
         malfunctionLabel.setText("Malfunction: " + (v.isMalfunction() ? "YES" : "NO"));
 
         if(v.getActiveRoute() != null) {
