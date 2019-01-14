@@ -26,4 +26,12 @@ public class Route {
     }
 
     public Stop getFirstStop() {return stops[0];}
+
+    public Stop getNextStop(Stop stop) {
+        for(int i=0; i<stops.length - 1; i++)
+        {
+            if(stop == stops[i]) return stops[i+1];
+        }
+        return stops[0];
+    }
 }

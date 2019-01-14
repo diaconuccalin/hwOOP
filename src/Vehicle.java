@@ -49,6 +49,9 @@ public class Vehicle {
 
     public void passTime(int time) {
         timeToDestination -= time;
+        if(timeToDestination == 0){
+            destination = currentRoute.getNextStop(currentStop);
+        }
     }
 
     public void sendOnRoute(Route r, Employee d) {
