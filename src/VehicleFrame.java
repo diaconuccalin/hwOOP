@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class VehicleFrame extends Frame {
-    public VehicleFrame(Vehicle v, AllVehicles av, List ls) {
+    public VehicleFrame(Vehicle v, AllVehicles av, List ls, AllRoutes ar) {
         int w = 400;
         int h = 600;
 
@@ -53,7 +53,7 @@ public class VehicleFrame extends Frame {
 
         Button removeVehicle = new Button("Remove Vehicle");
         p2.add(removeVehicle);
-        removeVehicle.setBounds(4, 4, 162, 20);
+        removeVehicle.setBounds(4, 28, 162, 20);
 
         removeVehicle.addActionListener(new ActionListener() {
             @Override
@@ -91,6 +91,49 @@ public class VehicleFrame extends Frame {
             }
         });
 
+        Button sendOnRoute = new Button("Send on route");
+        p2.add(sendOnRoute);
+        sendOnRoute.setBounds(4, 4, 162, 20);
+
+        sendOnRoute.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Flag yes = new Flag(false);
+
+                ChooseRouteFrame crf = new ChooseRouteFrame(ar, v);
+
+//                Flag yes = new Flag(false);
+//                SureFrame sf = new SureFrame(av, v.getId(), ls, yes);
+//
+//                sf.addWindowListener(new WindowListener() {
+//                    @Override
+//                    public void windowOpened(WindowEvent e) {}
+//
+//                    @Override
+//                    public void windowClosed(WindowEvent e) {
+//                        if(yes.getAux()) {
+//                            ls.select(0);
+//                            dispose();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void windowClosing(WindowEvent e) {}
+//
+//                    @Override
+//                    public void windowIconified(WindowEvent e) {}
+//
+//                    @Override
+//                    public void windowDeiconified(WindowEvent e) {}
+//
+//                    @Override
+//                    public void windowActivated(WindowEvent e) {}
+//
+//                    @Override
+//                    public void windowDeactivated(WindowEvent e) {}
+//                });
+            }
+        });
 
         Button cancelButton = new Button("Close");
         cancelButton.setBounds(175, 560, 50, 20);
