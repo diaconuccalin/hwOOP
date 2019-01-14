@@ -33,7 +33,7 @@ public class MainFrame extends Frame{
         this.ap = ap;
 
         for(int i = 0; i < 80; i++)
-            Arrays.fill(distances[i], -1);
+            Arrays.fill(distances[i], 2000);
 
         {
             distances[22][0] = 1;
@@ -135,7 +135,8 @@ public class MainFrame extends Frame{
             distances[75][1] = 1;
             distances[1][21] = 1;
             distances[21][39] = 1;
-            distances[39][4] = 3;
+            distances[39][13] = 1;
+            distances[13][4] = 3;
             distances[4][26] = 2;
             distances[26][65] = 2;
 
@@ -200,6 +201,10 @@ public class MainFrame extends Frame{
         }
 
         for(int i = 0; i < 80; i++) {
+            dijkstra(i);
+        }
+
+        for(int i = 0; i < 80; i++) {
             for(int j = 0; j < 80; j++) {
                 System.out.print(distances[i][j]);
                 System.out.print(" ");
@@ -208,21 +213,43 @@ public class MainFrame extends Frame{
         }
     }
 
-    private void dijkstra() {
-        boolean[] unvisited = new boolean[80];
-        Arrays.fill(unvisited, true);
+    private int minDistance(int[] dist, boolean[] sptSet) {
+        int min = 2000;
+        int minIndex = -1;
 
-        int[] tentativeDistance = new int[80];
-        Arrays.fill(tentativeDistance, -1);
-        tentativeDistance[0] = 0;
-
-        Place currNd = ap.getPlace(0);
-
-        for(int i = 0; i < 80; i++) {
-            if(distances[currNd.getId()][i] < tentativeDistance[i] || tentativeDistance[i] == -1) {
-                tentativeDistance[i] = distances[currNd.getId()][i];
+        for(int v = 0; v < 80; v++) {
+            if(!sptSet[v] && dist[v] <= min) {
+                min = dist[v];
+                minIndex = v;
             }
         }
+
+        return minIndex;
+    }
+
+    private void dijkstra(int src) {
+        int[] dist = new int[80];
+        boolean[] sptSet = new boolean[80];
+
+        for(int i = 0; i < 80; i++) {
+            dist[i] = 2000;
+            sptSet[i] = false;
+        }
+
+        dist[src] = 0;
+
+        for(int count = 0; count < 79; count++) {
+            int u = minDistance(dist, sptSet);
+            sptSet[u] = true;
+
+            for(int v = 0; v < 80; v++) {
+                if(!sptSet[v] && distances[u][v] != -1 && dist[u] != 2000 && dist[u] + distances[u][v] < dist[v]) {
+                    dist[v] = dist[u] + distances[u][v];
+                }
+            }
+        }
+
+        System.arraycopy(dist, 0, distances[src], 0, 80);
     }
 
     public void run() {
