@@ -6,7 +6,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class RouteFrame extends Frame{
-    public RouteFrame(Route r, AllStops as, ErrorFrame ef, AllRoutes ar, List rLs) {
+    public RouteFrame(Route r, AllStops as, ErrorFrame ef, AllRoutes ar, List rLs, int[][] distances) {
         int w = 590;
         int h = 600;
 
@@ -74,7 +74,7 @@ public class RouteFrame extends Frame{
                 try {
                     String selectedStop = ls.getSelectedItem();
                     Stop stopToSee = as.getStop(selectedStop);
-                    StopFrame sf = new StopFrame(stopToSee);
+                    StopFrame sf = new StopFrame(stopToSee, distances);
                 } catch (NullPointerException npe) {
                     ef.displayError("No item selected!");
                 }

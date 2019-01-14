@@ -1,5 +1,6 @@
 public class Stop extends Place {
     private String name;
+    private AllRoutes ar = new AllRoutes();
 
     public Stop(String name) {
         this.name = name;
@@ -7,5 +8,17 @@ public class Stop extends Place {
 
     public String getName() {
         return name;
+    }
+
+    public void addRoute(Route r) {
+        ar.addRoute(r);
+    }
+
+    public void removeRoute(Route r) {
+        ar.removeRoute(r.getId());
+    }
+
+    public AllRoutes getAr() {
+        return ar;
     }
 }

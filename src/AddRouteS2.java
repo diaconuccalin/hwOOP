@@ -44,7 +44,9 @@ public class AddRouteS2 extends Frame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                r.addStop(new Stop(stopChoice.getSelectedItem()));
+                Stop toAdd = as.getStop(stopChoice.getSelectedItem());
+                r.addStop(toAdd);
+                toAdd.addRoute(r);
                 AddRouteS2 ar2 = new AddRouteS2(r, as, ls, ar);
                 dispose();
             }
@@ -61,6 +63,10 @@ public class AddRouteS2 extends Frame {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Stop[] s = r.getStops();
+                for(int i = 0; i < r.getN(); i++) {
+                    s[i].removeRoute(r);
+                }
                 ar.removeRoute(r.getId());
                 dispose();
             }

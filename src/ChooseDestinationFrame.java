@@ -105,6 +105,7 @@ public class ChooseDestinationFrame extends Frame {
                                     break;
                 }
 
+                v.getActiveRoute().removeVehicle(v);
                 v.setActiveRoute(null);
 
                 if(v.getDriver() != null) {

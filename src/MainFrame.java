@@ -425,7 +425,7 @@ public class MainFrame extends Frame{
                 try {
                     String selectedStop = ls2.getSelectedItem();
                     Stop stopToSee = as.getStop(selectedStop);
-                    StopFrame sf = new StopFrame(stopToSee);
+                    StopFrame sf = new StopFrame(stopToSee, distances);
                 } catch (NullPointerException npe) {
                     ef.displayError("No item selected!");
                 }
@@ -438,7 +438,7 @@ public class MainFrame extends Frame{
                 try {
                     String selectedRoute = ls3.getSelectedItem();
                     Route routeToSee = ar.getRoute(selectedRoute);
-                    RouteFrame rf = new RouteFrame(routeToSee, as, ef, ar, ls3);
+                    RouteFrame rf = new RouteFrame(routeToSee, as, ef, ar, ls3, distances);
                 } catch(NullPointerException | NumberFormatException npe) {
                     ef.displayError("No item selected!");
                 }

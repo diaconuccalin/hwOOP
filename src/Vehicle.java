@@ -58,12 +58,7 @@ public class Vehicle {
         driver = setDriver(ae);
         destination = r.getFirstStop();
         timeToDestination += distances[destination.getId()][r.getFirstStop().getId()];
-    }
-
-    public void sendToDepot(Depot d, int[][] distances){
-        timeToDestination += distances[destination.getId()][d.getId()];
-        destination = d;
-        activeRoute = null;
+        r.addVehicle(this);
     }
 
     Random random = new Random();
@@ -107,5 +102,13 @@ public class Vehicle {
 
     public Employee getDriver() {
         return driver;
+    }
+
+    public Place getDestination() {
+        return destination;
+    }
+
+    public int getTimeToDestination() {
+        return timeToDestination;
     }
 }
