@@ -15,7 +15,7 @@ public class TimeControlFrame extends Frame {
         setLocation(p.x + 790, p.y);
 
         Button btn1s = new Button("1 minute   >");
-        btn1s.setBounds(75, 45, 100, 30);
+        btn1s.setBounds(50, 45, 150, 30);
         add(btn1s);
 
         btn1s.addActionListener(new ActionListener() {

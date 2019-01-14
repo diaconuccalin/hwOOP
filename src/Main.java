@@ -5,6 +5,7 @@ public class Main {
     private static AllRoutes ar = new AllRoutes();
     private static AllStops as = new AllStops();
     private static AllEmployees ae = new AllEmployees();
+    private static AllPlaces ap = new AllPlaces();
 
     private static Depot d1 = new Depot("Bucium", 30, 0);
     private static Depot d2 = new Depot("Unirii", 210, 1);
@@ -800,13 +801,22 @@ public class Main {
             vp.addVehicle(new Vehicle(908, Vehicle.vehicleType.SERVICE));
             vp.addVehicle(new Vehicle(909, Vehicle.vehicleType.SERVICE));
         }
+        {
+            ap.addPlace(d1);
+            ap.addPlace(d2);
+            ap.addPlace(d3);
+
+            for(int i = 0; i < as.getN(); i++) {
+                ap.addPlace(as.getStop(i));
+            }
+        }
 
         Stop[] aux = as.getAll();
         for(int i = 0; i < as.getN(); i++) {
             aux[i].setId(i + 3);
         }
 
-        MainFrame mf = new MainFrame(vp, ar, as, ae, d1, d2, d3);
+        MainFrame mf = new MainFrame(vp, ar, as, ae, d1, d2, d3, ap);
         mf.run();
         TimeControlFrame tcf = new TimeControlFrame(mf);
     }

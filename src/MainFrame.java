@@ -15,13 +15,14 @@ public class MainFrame extends Frame{
     private AllRoutes ar;
     private AllStops as;
     private AllEmployees ae;
+    private AllPlaces ap;
     private Depot d1;
     private Depot d2;
     private Depot d3;
 
     private int[][] distances = new int[80][80];
 
-    public MainFrame(AllVehicles vp, AllRoutes ar, AllStops as, AllEmployees ae, Depot d1, Depot d2, Depot d3) {
+    public MainFrame(AllVehicles vp, AllRoutes ar, AllStops as, AllEmployees ae, Depot d1, Depot d2, Depot d3, AllPlaces ap) {
         this.vp = vp;
         this.ar = ar;
         this.as = as;
@@ -29,6 +30,7 @@ public class MainFrame extends Frame{
         this.d1 = d1;
         this.d2 = d2;
         this.d3 = d3;
+        this.ap = ap;
 
         for(int i = 0; i < 80; i++)
             Arrays.fill(distances[i], -1);
@@ -196,31 +198,31 @@ public class MainFrame extends Frame{
             distances[5][24] = 4;
             distances[5][56] = 4;
         }
-//        {
-//            for(int i = 0; i < 80; i++) {
-//                boolean unvisited[] = new boolean[80];
-//                Arrays.fill(unvisited, true);
-//                unvisited[i] = false;
-//
-//                int tentDist[] = new int[80];
-//                Arrays.fill(tentDist, -1);
-//                tentDist[i] = 0;
-//
-//                for(int j = 0; j < 80; j++) {
-//                    if(distances[i][j] != -1 && unvisited[j] == true) {
-//
-//                    }
-//                }
-//            }
-//        }
-//
-//        for(int i = 0; i < 80; i++) {
-//            for(int j = 0; j < 80; j++) {
-//                System.out.print(distances[i][j]);
-//                System.out.print(" ");
-//            }
-//            System.out.println();
-//        }
+
+        for(int i = 0; i < 80; i++) {
+            for(int j = 0; j < 80; j++) {
+                System.out.print(distances[i][j]);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+
+    private void dijkstra() {
+        boolean[] unvisited = new boolean[80];
+        Arrays.fill(unvisited, true);
+
+        int[] tentativeDistance = new int[80];
+        Arrays.fill(tentativeDistance, -1);
+        tentativeDistance[0] = 0;
+
+        Place currNd = ap.getPlace(0);
+
+        for(int i = 0; i < 80; i++) {
+            if(distances[currNd.getId()][i] < tentativeDistance[i] || tentativeDistance[i] == -1) {
+                tentativeDistance[i] = distances[currNd.getId()][i];
+            }
+        }
     }
 
     public void run() {

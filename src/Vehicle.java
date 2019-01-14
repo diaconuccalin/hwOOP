@@ -17,6 +17,7 @@ public class Vehicle {
 
     private Depot currentDepot;
     private Stop currentStop;
+    private Route currentRoute;
 
     Vehicle(int id, vehicleType type) {
         fuel = 100;
