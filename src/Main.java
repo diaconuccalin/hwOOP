@@ -7,9 +7,9 @@ public class Main {
     private static AllEmployees ae = new AllEmployees();
     private static AllPlaces ap = new AllPlaces();
 
-    private static Depot d1 = new Depot("Bucium", 30, 0);
-    private static Depot d2 = new Depot("Unirii", 210, 1);
-    private static Depot d3 = new Depot("Zorilor", 120, 2);
+    private static Depot d1 = new Depot("Bucium", 0);
+    private static Depot d2 = new Depot("Unirii", 1);
+    private static Depot d3 = new Depot("Zorilor", 2);
 
     public static void main(String[] args) {
         {
@@ -809,6 +809,39 @@ public class Main {
             for(int i = 0; i < as.getN(); i++) {
                 ap.addPlace(as.getStop(i));
             }
+        }
+
+        Vehicle[] v = vp.getPark();
+
+        for(int i = 0; i < 110; i++) {
+            d1.addVehicle(v[i]);
+        }
+
+        for(int i = 110; i < 150; i++) {
+            d2.addVehicle(v[i]);
+        }
+
+        for(int i = 150; i < 167; i++) {
+            d3.addVehicle(v[i]);
+        }
+
+        d1.addVehicle(v[167]);
+        d1.addVehicle(v[168]);
+        d1.addVehicle(v[169]);
+        d1.addVehicle(v[170]);
+
+        d2.addVehicle(v[171]);
+        d2.addVehicle(v[172]);
+
+        d3.addVehicle(v[173]);
+        d3.addVehicle(v[174]);
+
+        for(int i = 174; i < 205; i++) {
+            d1.addVehicle(v[i]);
+        }
+
+        for(int i = 205; i < 218; i++) {
+            d3.addVehicle(v[i]);
         }
 
         Stop[] aux = as.getAll();

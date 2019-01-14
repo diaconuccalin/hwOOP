@@ -203,14 +203,6 @@ public class MainFrame extends Frame{
         for(int i = 0; i < 80; i++) {
             dijkstra(i);
         }
-
-        for(int i = 0; i < 80; i++) {
-            for(int j = 0; j < 80; j++) {
-                System.out.print(distances[i][j]);
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
     }
 
     private int minDistance(int[] dist, boolean[] sptSet) {
@@ -291,21 +283,21 @@ public class MainFrame extends Frame{
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d1,distances);
+                DepotFrame ip = new DepotFrame(d1, vp, ef, distances);
             }
         });
 
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d2,distances);
+                DepotFrame ip = new DepotFrame(d2, vp, ef, distances);
             }
         });
 
         b4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d3,distances);
+                DepotFrame ip = new DepotFrame(d3, vp, ef, distances);
             }
         });
 

@@ -61,4 +61,10 @@ public class AllVehicles {
             park[i].passTime(time);
         }
     }
+
+    public Vehicle getVehicle(String s) {
+        String sAux = s.replaceAll("[^0-9]", "");
+        int aux = Integer.parseInt(sAux);
+        return findVehicle(aux);
+    }
 }
