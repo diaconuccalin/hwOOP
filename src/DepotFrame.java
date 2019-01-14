@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DepotFrame extends Frame{
-    public DepotFrame(Depot dep, AllVehicles av, ErrorFrame ef, AllRoutes ar) {
+    public DepotFrame(Depot dep, AllVehicles av, ErrorFrame ef, int[][] distances, AllRoutes ar) {
         int w = 590;
         int h = 600;
 

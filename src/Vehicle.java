@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Vehicle {
     enum vehicleType {
         BUS,
@@ -11,7 +12,7 @@ public class Vehicle {
     private boolean malfunction;
 
     private int timeToDestination;
-    private Stop destination;
+    private Place destination;
     private Route activeRoute;
     private Employee driver;
 
@@ -54,10 +55,31 @@ public class Vehicle {
         }
     }
 
-    public void sendOnRoute(Route r, Employee d) {
+    public void sendOnRoute(Route r, AllEmployees ae, int[][] time) {
         activeRoute = r;
-        driver = d;
+        driver = setDriver(ae);
         destination = r.getFirstStop();
-//        timeToDestination =                   build a matrix with all possible times and get the time from there
+        timeToDestination = time[destination.getId()][r.getFirstStop().getId()];
+    }
+
+    public void sendToDepot(Depot d, int[][] distances){
+
+        timeToDestination = distances[destination.getId()][d.getId()];
+        destination = d;
+
+    }
+
+    Random random = new Random();
+
+    public Employee setDriver(AllEmployees ae) {
+
+        Employee[] e = ae.getAll();
+        int a = random.nextInt(150);
+
+        while(e[a].isOnRoad())
+        {
+            a = random.nextInt(150);
+        }
+       return driver = e[a];
     }
 }
