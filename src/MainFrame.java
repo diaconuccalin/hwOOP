@@ -283,21 +283,21 @@ public class MainFrame extends Frame{
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d1);
+                DepotFrame ip = new DepotFrame(d1, vp, ef);
             }
         });
 
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d2);
+                DepotFrame ip = new DepotFrame(d2, vp, ef);
             }
         });
 
         b4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d3);
+                DepotFrame ip = new DepotFrame(d3, vp, ef);
             }
         });
 

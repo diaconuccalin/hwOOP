@@ -1,10 +1,10 @@
 public class Depot extends Place{
     private String name;
-    private int capacity;
 
-    public Depot(String name, int capacity, int id) {
+    private AllVehicles avd = new AllVehicles();
+
+    public Depot(String name, int id) {
         this.name = name;
-        this.capacity = capacity;
         this.setId(id);
     }
 
@@ -12,7 +12,7 @@ public class Depot extends Place{
         return name;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public void addVehicle(Vehicle v) {
+        avd.addVehicle(v);
     }
 }
