@@ -67,7 +67,7 @@ public class Vehicle {
     public void sendToDepot(Depot d, int[][] distances){
         timeToDestination = distances[destination.getId()][d.getId()];
         destination = d;
-
+        activeRoute = null;
     }
 
     Random random = new Random();
@@ -94,5 +94,9 @@ public class Vehicle {
 
     public Depot getCurrentDepot() {
         return currentDepot;
+    }
+
+    public void setActiveRoute(Route activeRoute) {
+        this.activeRoute = activeRoute;
     }
 }

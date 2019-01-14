@@ -9,7 +9,7 @@ public class VehicleFrame extends Frame {
     Label routeLabel = new Label();
     Label depotLabel = new Label();
 
-    public VehicleFrame(Vehicle v, AllVehicles av, List ls, AllRoutes ar, AllEmployees ae, int[][] distances) {
+    public VehicleFrame(Vehicle v, AllVehicles av, List ls, AllRoutes ar, AllEmployees ae, int[][] distances, Depot d1, Depot d2, Depot d3) {
         int w = 400;
         int h = 600;
 
@@ -69,7 +69,7 @@ public class VehicleFrame extends Frame {
 
         Button removeVehicle = new Button("Remove Vehicle");
         p2.add(removeVehicle);
-        removeVehicle.setBounds(4, 28, 162, 20);
+        removeVehicle.setBounds(4, 52, 162, 20);
 
         removeVehicle.addActionListener(new ActionListener() {
             @Override
@@ -115,6 +115,54 @@ public class VehicleFrame extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ChooseDestinationFrame crf = new ChooseDestinationFrame(ar, v, ae, distances);
+
+                crf.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        updateLabels(v);
+                    }
+
+                    @Override
+                    public void windowIconified(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowActivated(WindowEvent e) {
+
+                    }
+
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {
+
+                    }
+                });
+            }
+        });
+
+        Button sendToDepot = new Button("Send to depot");
+        p2.add(sendToDepot);
+        sendToDepot.setBounds(4, 28, 162, 20);
+
+        sendToDepot.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ChooseDestinationFrame crf = new ChooseDestinationFrame(d1, d2, d3, v, ae, distances);
 
                 crf.addWindowListener(new WindowListener() {
                     @Override
