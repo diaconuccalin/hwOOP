@@ -203,14 +203,6 @@ public class MainFrame extends Frame{
         for(int i = 0; i < 80; i++) {
             dijkstra(i);
         }
-
-        for(int i = 0; i < 80; i++) {
-            for(int j = 0; j < 80; j++) {
-                System.out.print(distances[i][j]);
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
     }
 
     private int minDistance(int[] dist, boolean[] sptSet) {
