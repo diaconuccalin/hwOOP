@@ -283,21 +283,21 @@ public class MainFrame extends Frame{
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d1, vp, ef);
+                DepotFrame ip = new DepotFrame(d1, vp, ef, ar);
             }
         });
 
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d2, vp, ef);
+                DepotFrame ip = new DepotFrame(d2, vp, ef, ar);
             }
         });
 
         b4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DepotFrame ip = new DepotFrame(d3, vp, ef);
+                DepotFrame ip = new DepotFrame(d3, vp, ef, ar);
             }
         });
 
@@ -412,7 +412,7 @@ public class MainFrame extends Frame{
                     }
 
                     Vehicle toSee = vp.findVehicle(Integer.parseInt(selVehID.toString()));
-                    VehicleFrame vf = new VehicleFrame(toSee, vp, ls1);
+                    VehicleFrame vf = new VehicleFrame(toSee, vp, ls1, ar);
                 } catch (NullPointerException npe) {
                     ef.displayError("No item selected!");
                 }

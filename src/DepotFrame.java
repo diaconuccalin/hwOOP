@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DepotFrame extends Frame{
-    public DepotFrame(Depot dep, AllVehicles av, ErrorFrame ef) {
+    public DepotFrame(Depot dep, AllVehicles av, ErrorFrame ef, AllRoutes ar) {
         int w = 590;
         int h = 600;
 
@@ -76,7 +76,7 @@ public class DepotFrame extends Frame{
                 try {
                     String selectedVehicle = ls.getSelectedItem();
                     Vehicle vToSee = av.getVehicle(selectedVehicle);
-                    VehicleFrame vf = new VehicleFrame(vToSee, av, ls);
+                    VehicleFrame vf = new VehicleFrame(vToSee, av, ls, ar);
                 } catch (NullPointerException npe) {
                     ef.displayError("No item selected!");
                 }
