@@ -1,4 +1,4 @@
-public class Stop {
+public class Stop extends Place {
     private String name;
 
     public Stop(String name) {

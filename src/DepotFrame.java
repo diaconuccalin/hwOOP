@@ -44,6 +44,10 @@ public class DepotFrame extends Frame{
         p1.add(capacityLabel);
         capacityLabel.setBounds(2, 15, 170, 18);
 
+        Label idLabel = new Label("ID: " + dep.getId(), Label.LEFT);
+        p1.add(idLabel);
+        idLabel.setBounds(2, 30, 170, 18);
+
         Button cancelButton = new Button("Close");
         cancelButton.setBounds(175, 560, 50, 20);
 

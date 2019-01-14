@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
+import java.util.Stack;
 
 public class MainFrame extends Frame{
     private List ls1 = new List();
@@ -17,20 +19,213 @@ public class MainFrame extends Frame{
     private Depot d2;
     private Depot d3;
 
+    private int[][] distances = new int[80][80];
+
     public MainFrame(AllVehicles vp, AllRoutes ar, AllStops as, AllEmployees ae, Depot d1, Depot d2, Depot d3) {
         this.vp = vp;
         this.ar = ar;
-        this. as = as;
+        this.as = as;
         this.ae = ae;
         this.d1 = d1;
         this.d2 = d2;
         this.d3 = d3;
+
+        for(int i = 0; i < 80; i++)
+            Arrays.fill(distances[i], -1);
+
+        {
+            distances[22][0] = 1;
+
+            distances[0][60] = 1;
+            distances[0][8] = 1;
+
+            distances[60][46] = 3;
+            distances[46][41] = 3;
+
+            distances[41][33] = 3;
+            distances[41][10] = 3;
+            distances[41][70] = 4;
+
+            distances[33][76] = 2;
+
+            distances[76][2] = 3;
+
+            distances[2][79] = 1;
+            distances[2][32] = 1;
+
+            distances[76][79] = 3;
+            distances[79][68] = 2;
+            distances[68][49] = 2;
+
+            distances[49][48] = 1;
+            distances[49][45] = 1;
+            distances[49][36] = 2;
+
+            distances[45][25] = 1;
+            distances[25][16] = 2;
+            distances[25][29] = 1;
+            distances[29][27] = 2;
+            distances[27][23] = 1;
+            distances[23][30] = 1;
+            distances[30][78] = 1;
+            distances[78][12] = 1;
+
+            distances[12][48] = 1;
+            distances[12][36] = 2;
+
+            distances[48][67] = 2;
+            distances[67][35] = 1;
+
+            distances[35][32] = 3;
+            distances[35][2] = 1;
+
+            distances[32][10] = 5;
+            distances[32][70] = 6;
+            distances[32][20] = 3;
+
+            distances[20][10] = 4;
+            distances[20][70] = 4;
+            distances[20][58] = 2;
+
+            distances[58][61] = 1;
+            distances[61][34] = 1;
+            distances[34][18] = 1;
+
+            distances[18][0] = 1;
+            distances[18][8] = 1;
+
+            distances[8][22] = 1;
+            distances[8][17] = 3;
+            distances[8][47] = 4;
+
+
+
+            distances[74][22] = 5;
+            distances[74][17] = 4;
+
+            distances[17][53] = 1;
+
+            distances[53][37] = 2;
+            distances[53][10] = 4;
+
+            distances[37][58] = 2;
+            distances[37][41] = 3;
+
+            distances[10][3] = 2;
+            distances[3][11] = 2;
+            distances[11][44] = 3;
+
+            distances[44][15] = 3;
+            distances[44][77] = 2;
+
+            distances[77][71] = 2;
+            distances[77][62] = 2;
+
+            distances[62][59] = 3;
+            distances[62][7] = 2;
+
+            distances[7][55] = 1;
+            distances[55][42] = 1;
+            distances[42][28] = 2;
+            distances[28][14] = 1;
+            distances[14][40] = 2;
+            distances[40][75] = 1;
+            distances[75][1] = 1;
+            distances[1][21] = 1;
+            distances[21][39] = 1;
+            distances[39][4] = 3;
+            distances[4][26] = 2;
+            distances[26][65] = 2;
+
+            distances[65][59] = 2;
+            distances[65][24] = 2;
+
+            distances[24][66] = 2;
+
+            distances[66][15] = 2;
+            distances[66][43] = 2;
+
+            distances[43][69] = 2;
+            distances[69][31] = 2;
+            distances[31][38] = 2;
+
+            distances[38][37] = 2;
+            distances[38][70] = 3;
+
+            distances[70][9] = 1;
+
+            distances[9][22] = 3;
+            distances[9][47] = 2;
+
+            distances[47][74] = 3;
+
+
+            distances[15][19] = 2;
+            distances[19][54] = 2;
+            distances[54][72] = 2;
+            distances[72][56] = 2;
+
+            distances[56][66] = 4;
+            distances[56][71] = 4;
+            distances[56][62] = 4;
+
+            distances[71][64] = 3;
+
+            distances[64][48] = 3;
+            distances[64][45] = 2;
+
+            distances[36][52] = 4;
+
+            distances[52][51] = 2;
+            distances[52][73] = 1;
+
+            distances[51][62] = 1;
+            distances[51][66] = 2;
+
+            distances[73][63] = 2;
+            distances[63][6] = 2;
+
+            distances[6][42] = 2;
+            distances[6][26] = 2;
+
+
+            distances[59][57] = 2;
+            distances[57][50] = 2;
+            distances[50][5] = 2;
+
+            distances[5][24] = 4;
+            distances[5][56] = 4;
+        }
+//        {
+//            for(int i = 0; i < 80; i++) {
+//                boolean unvisited[] = new boolean[80];
+//                Arrays.fill(unvisited, true);
+//                unvisited[i] = false;
+//
+//                int tentDist[] = new int[80];
+//                Arrays.fill(tentDist, -1);
+//                tentDist[i] = 0;
+//
+//                for(int j = 0; j < 80; j++) {
+//                    if(distances[i][j] != -1 && unvisited[j] == true) {
+//
+//                    }
+//                }
+//            }
+//        }
+//
+//        for(int i = 0; i < 80; i++) {
+//            for(int j = 0; j < 80; j++) {
+//                System.out.print(distances[i][j]);
+//                System.out.print(" ");
+//            }
+//            System.out.println();
+//        }
     }
 
     public void run() {
         int w = 800;
         int h = 500;
-
 
         Label l1 = new Label("Vehicles", Label.CENTER);
         Label l2 = new Label("Stops", Label.CENTER);

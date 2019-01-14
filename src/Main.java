@@ -6,9 +6,9 @@ public class Main {
     private static AllStops as = new AllStops();
     private static AllEmployees ae = new AllEmployees();
 
-    private static Depot d1 = new Depot("Bucium", 30);
-    private static Depot d2 = new Depot("Unirii", 210);
-    private static Depot d3 = new Depot("Zorilor", 120);
+    private static Depot d1 = new Depot("Bucium", 30, 0);
+    private static Depot d2 = new Depot("Unirii", 210, 1);
+    private static Depot d3 = new Depot("Zorilor", 120, 2);
 
     public static void main(String[] args) {
         {
@@ -388,6 +388,7 @@ public class Main {
             r24.addStop(as.getStop("Gradini Manastur"));
             r24.addStop(as.getStop("Taberei"));
             r24.addStop(as.getStop("Calea Floresti"));
+            r24.addStop(as.getStop("Nodul N"));
             r24.addStop(as.getStop("VIVO"));
             r24.addStop(as.getStop("Ciobanului"));
             r24.addStop(as.getStop("P-ta Flora"));
@@ -798,6 +799,11 @@ public class Main {
             vp.addVehicle(new Vehicle(907, Vehicle.vehicleType.SERVICE));
             vp.addVehicle(new Vehicle(908, Vehicle.vehicleType.SERVICE));
             vp.addVehicle(new Vehicle(909, Vehicle.vehicleType.SERVICE));
+        }
+
+        Stop[] aux = as.getAll();
+        for(int i = 0; i < as.getN(); i++) {
+            aux[i].setId(i + 3);
         }
 
         MainFrame mf = new MainFrame(vp, ar, as, ae, d1, d2, d3);
