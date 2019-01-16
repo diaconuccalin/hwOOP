@@ -1,3 +1,10 @@
+/**
+ * <h1>Stop frame</h1>
+ * The StopFrame class is the window which gives access to information on a certain Stop.
+ * <br>It creates a 400x600 window, which shows a panel with information about the Stop
+ * and another panel with the times until the next Vehicle arrives on each of the Routes that pass through the Stop.
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +13,11 @@ import java.awt.event.ActionListener;
 public class StopFrame extends Frame {
     private Label[] routeLabel = new Label[30];
 
+    /**
+     * Constructor method.
+     * @param s The Stop of interrest.
+     * @param distances The matrix with the distances between all the Places.
+     */
     public StopFrame(Stop s, int[][] distances) {
         int w = 400;
         int h = 600;

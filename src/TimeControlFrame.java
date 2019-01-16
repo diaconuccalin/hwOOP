@@ -1,3 +1,9 @@
+/**
+ * <h1>Time Controller frame</h1>
+ * The frame which normally should always be visible. It allows the user to "pass" the time by 1, 10 or 160 minutes.
+ * It also keeps track of the time that passed so far, since the beginning of the application.
+ */
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,6 +11,10 @@ import java.awt.event.ActionListener;
 public class TimeControlFrame extends Frame {
     int t = 0;
 
+    /**
+     * Constructor method.
+     * @param mf The MainFrame relative to which this will be created.
+     */
     public TimeControlFrame(MainFrame mf) {
         int w = 250;
         int h = 200;

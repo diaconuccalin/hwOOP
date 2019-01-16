@@ -1,8 +1,22 @@
+/**
+ * <h1>Choose Destination frame</h1>
+ *  The ChooseDestinationFrame class is the window which enables the user to send a Vehicle on a Route or to a Depot.
+ *  <br>It creates a 250x150 window which shows a Choice with all the Routes or Depots available and two buttons:
+ *  OK, for completing the action, and Cancel, for canceling the action.
+ */
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ChooseDestinationFrame extends Frame {
+    /**
+     * This constructor is used to select a Route to which the Vehicle needs to be sent.
+     * @param ar This is the list of routes that will be displayed in the choice.
+     * @param v This is the Vehicle that needs to be sent.
+     * @param ae This is used to assign an Employee to a Vehicle.
+     * @param distances The matrix of distances between places. Used for computing the time to the next destination.
+     */
     public ChooseDestinationFrame(AllRoutes ar, Vehicle v, AllEmployees ae, int[][] distances) {
         int w = 250;
         int h = 150;
@@ -55,7 +69,14 @@ public class ChooseDestinationFrame extends Frame {
         setVisible(true);
     }
 
-    public ChooseDestinationFrame(Depot d1, Depot d2, Depot d3, Vehicle v, AllEmployees ae, int[][] distances) {
+    /**
+     * This constructor is used to select a Depot to which the Vehicle needs to be sent.
+     * @param d1 This is the first Depot in the Choice.
+     * @param d2 THis is the second Depot in the Choice.
+     * @param d3 This is the third Depot in the Choice.
+     * @param v This is the Vehicle to be sent to Depot.
+     */
+    public ChooseDestinationFrame(Depot d1, Depot d2, Depot d3, Vehicle v) {
         int w = 250;
         int h = 150;
 

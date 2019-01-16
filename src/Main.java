@@ -1,4 +1,9 @@
-import java.util.List;
+/**
+ * <h1>Main</h1>
+ * This is the Main class which only contains the main function to make use of the MainFrame and TimeControlFrame classes.
+ * <br>Also, this is the place where we create different Objects of the needed Classes to fully exemplify the functionality
+ * of the application.
+ */
 
 public class Main {
     private static AllVehicles vp = new AllVehicles();
@@ -11,6 +16,10 @@ public class Main {
     private static Depot d2 = new Depot("Unirii", 1);
     private static Depot d3 = new Depot("Zorilor", 2);
 
+    /**
+     * The main method which is run at the beginning of the application.
+     * @param args Unused.
+     */
     public static void main(String[] args) {
         {
             as.addStop(new Stop("Taberei"));

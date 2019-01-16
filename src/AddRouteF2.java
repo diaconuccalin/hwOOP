@@ -1,8 +1,27 @@
+/**
+ * <h1>Add Route frame 2</h1>
+ * The AddRouteF2 class is the window which enables the user to finish the addition of more routes
+ * to an AllRoutes object and also to the list that displays all the employees.
+ * <br>It creates a 250x150 window which shows a Choice for the first or next Stop in the Route
+ * and three buttons: Add, which adds the current Stop selected in the Choice field, Done, which
+ * keeps the already added Stops and adds the newly created Route to the ls List and the ar AllRoutes.
+ */
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddRouteF2 extends Frame {
+    /**
+     * This is the constructor. It needs the List and the AllRoutes, to which it will add the
+     * newly created Route after the Add button is pressed, and also the ErrorFrame to prevent
+     * the user from entering an id that is not an integer and the AllStops object used to display
+     * the Stops in the Choice field.
+     * @param r For the newly created Route.
+     * @param as To add stops to stopChoice Choice object.
+     * @param ls For the List to which it should add the newly created Route's id.
+     * @param ar For the Routes list to which it should add the r Route object.
+     */
     public AddRouteF2(Route r, AllStops as, List ls, AllRoutes ar) {
         int w = 250;
         int h = 150;

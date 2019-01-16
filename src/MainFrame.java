@@ -1,3 +1,11 @@
+/**
+ * <h1>Main frame</h1>
+ * The first window seen by the user when the application is opened.
+ * <br>It creates a window of 800x500, with 4 Lists containing all the available Vehicles, Stops, Routes and Employees.
+ * It also has a panel with buttons to add new Objects of the Vehicle, Route and Employee classes and buttons
+ * to get the data of all the displayed Objects.
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -22,6 +30,17 @@ public class MainFrame extends Frame{
 
     private int[][] distances = new int[80][80];
 
+    /**
+     * Constructor method used to fill the distances matrix.
+     * @param vp Containing all the Vehicles.
+     * @param ar Containing all the Routes.
+     * @param as Containing all the Stops.
+     * @param ae Containing all the Employees.
+     * @param d1 The first Depot.
+     * @param d2 The second Depot.
+     * @param d3 The third Depot.
+     * @param ap Containing all the Places.
+     */
     public MainFrame(AllVehicles vp, AllRoutes ar, AllStops as, AllEmployees ae, Depot d1, Depot d2, Depot d3, AllPlaces ap) {
         this.vp = vp;
         this.ar = ar;
@@ -205,6 +224,12 @@ public class MainFrame extends Frame{
         }
     }
 
+    /**
+     * Used in dijkstra.
+     * @param dist Array of distances from source Place to the other Places.
+     * @param sptSet Array to check which Place was "visited"
+     * @return int The minimum found distance.
+     */
     private int minDistance(int[] dist, boolean[] sptSet) {
         int min = 2000;
         int minIndex = -1;
@@ -219,6 +244,10 @@ public class MainFrame extends Frame{
         return minIndex;
     }
 
+    /**
+     * The algorithm for finding the shortest path from source to all the other Places and completing the distances matrix.
+     * @param src The id of the source Place.
+     */
     private void dijkstra(int src) {
         int[] dist = new int[80];
         boolean[] sptSet = new boolean[80];
@@ -244,6 +273,9 @@ public class MainFrame extends Frame{
         System.arraycopy(dist, 0, distances[src], 0, 80);
     }
 
+    /**
+     * Actual function for drawing and filling the window.
+     */
     public void run() {
         int w = 800;
         int h = 500;

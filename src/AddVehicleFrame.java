@@ -1,8 +1,25 @@
+/**
+ * <h1>Add Vehicle frame</h1>
+ * The AddVehicleFrame class is the window which enables the user to add a new Vehicle to an AllVehicles
+ * object and to the list that displays all the employees.
+ * <br>It creates a 250x150 window which shows a text field, where the user must put the new Vehicle's id
+ * (only integers accepted), a Choice for selecting the Vehicle's type and two buttons, Add and Cancel,
+ * for finishing or canceling the addition.
+ */
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddVehicleFrame extends Frame {
+    /**
+     * This is the constructor. It needs the List and the AllVehicles, to which it will add the
+     * newly created Vehicle after the Add button is pressed, and also the ErrorFrame
+     * which will prevent the user from entering an id that is not an integer.
+     * @param ls The List object to which the newly created Vehicle's id and type will be added.
+     * @param vp The AllVehicles object to which the newly created Vehicle will be added.
+     * @param ef For the ErrorFrame which will inform the user that the id needs to be an integer.
+     */
     public AddVehicleFrame(List ls, AllVehicles vp, ErrorFrame ef) {
         int w = 250;
         int h = 150;

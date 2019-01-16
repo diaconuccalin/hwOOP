@@ -1,9 +1,26 @@
-import javax.swing.*;
+/**
+ * <h1>Depot frame</h1>
+ * The DepotFrame class is the window which gives access to information about the Depot and list of stored Vehicles.
+ * <br>It creates a 590x600 window, which shows a panel with information and a List with all the Vehicles available.
+ * It will also have a button to obtain more information about the selected Vehicle.
+ */
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DepotFrame extends Frame{
+    /**
+     * Constructor method.
+     * @param dep This is the Depot of interest.
+     * @param ef This is used when trying to get the details of a Vehicle when nothing in the List is selected.
+     * @param distances The matrix of distances between all the Places.
+     * @param ar The list of all Routes, passed to VehicleFrame.
+     * @param ae The list of all Employees, passed to VehicleFrame.
+     * @param d1 The first depot.
+     * @param d2 The second depot.
+     * @param d3 The third depot.
+     */
     public DepotFrame(Depot dep, ErrorFrame ef, int[][] distances, AllRoutes ar, AllEmployees ae, Depot d1, Depot d2, Depot d3) {
         int w = 590;
         int h = 600;

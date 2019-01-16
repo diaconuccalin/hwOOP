@@ -1,3 +1,10 @@
+/**
+ * <h1>Route frame</h1>
+ * The RouteFrame class is the window which gives access to information on a certain Route.
+ * <br>It creates a 590x600 window, which shows a panel with information about the Route,
+ * a panel with controls of the Route and a third column with a List of the Stops in the Route.
+ */
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,6 +12,15 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class RouteFrame extends Frame{
+    /**
+     * Constructor method.
+     * @param r The Route of interest.
+     * @param as A list of all the stops.
+     * @param ef ErrorFrame used to display message when no item is selected.
+     * @param ar The list of all the Routes.
+     * @param rLs The List of all the Stops in the Route.
+     * @param distances The matrix of the distances between all the Places.
+     */
     public RouteFrame(Route r, AllStops as, ErrorFrame ef, AllRoutes ar, List rLs, int[][] distances) {
         int w = 590;
         int h = 600;

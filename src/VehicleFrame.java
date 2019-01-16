@@ -169,7 +169,7 @@ public class VehicleFrame extends Frame {
         sendToDepot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ChooseDestinationFrame crf = new ChooseDestinationFrame(d1, d2, d3, v, ae, distances);
+                ChooseDestinationFrame crf = new ChooseDestinationFrame(d1, d2, d3, v);
 
                 crf.addWindowListener(new WindowListener() {
                     @Override
