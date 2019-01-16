@@ -866,6 +866,5 @@ public class Main {
         MainFrame mf = new MainFrame(vp, ar, as, ae, d1, d2, d3, ap);
         mf.run();
         TimeControlFrame tcf = new TimeControlFrame(mf);
-
     }
 }

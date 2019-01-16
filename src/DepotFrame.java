@@ -8,12 +8,12 @@ public class DepotFrame extends Frame{
         int w = 590;
         int h = 600;
 
+        Color lightestGray = new Color(230, 230, 230);
+
         setLayout(null);
         setSize(w, h);
         setTitle("Depot: " + dep.getName());
         setLocationRelativeTo(null);
-        setVisible(true);
-
 
         Label l1 = new Label("Info", Label.CENTER);
         Label l2 = new Label("Control", Label.CENTER);
@@ -23,31 +23,26 @@ public class DepotFrame extends Frame{
         l2.setBounds(210, 40, 170, 20);
         l3.setBounds(400, 40, 170, 20);
 
-
         Panel p1 = new Panel();
         Panel p2 = new Panel();
         List ls = new List();
 
-        Color lightestGray = new Color(230, 230, 230);
+        p1.setBounds(20, 70, 170, 480);
+        p2.setBounds(210, 70, 170, 480);
+        ls.setBounds(400, 70, 170, 450);
 
         p1.setBackground(lightestGray);
         p2.setBackground(lightestGray);
 
-        p1.setBounds(20, 70, 170, 480);
-        p2.setBounds(210, 70, 170, 480);
-        ls.setBounds(400, 70, 170, 450);
+        p1.setLayout(null);
+        p2.setLayout(null);
 
         int vn = dep.getAvd().getN();
         Vehicle[] v = dep.getAvd().getPark();
         for(int i = 0; i < vn; i++) {
             ls.add(v[i].getType() + " - " + v[i].getId());
         }
-
         ls.select(0);
-
-
-        p1.setLayout(null);
-        p2.setLayout(null);
 
         Label nameLabel = new Label("Name: " + dep.getName(), Label.LEFT);
         p1.add(nameLabel);
@@ -58,9 +53,9 @@ public class DepotFrame extends Frame{
         idLabel.setBounds(2, 15, 170, 18);
 
         Button cancelButton = new Button("Close");
-        cancelButton.setBounds(270, 560, 50, 20);
-
         Button seeVehicleDetails = new Button("Vehicle");
+
+        cancelButton.setBounds(270, 560, 50, 20);
         seeVehicleDetails.setBounds(400, 530, 170, 20);
 
         cancelButton.addActionListener(new ActionListener() {
@@ -83,7 +78,6 @@ public class DepotFrame extends Frame{
             }
         });
 
-
         add(l1);
         add(l2);
         add(l3);
@@ -92,5 +86,7 @@ public class DepotFrame extends Frame{
         add(ls);
         add(cancelButton);
         add(seeVehicleDetails);
+
+        setVisible(true);
     }
 }

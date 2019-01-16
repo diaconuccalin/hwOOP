@@ -9,17 +9,16 @@ public class ErrorFrame extends Frame {
     public ErrorFrame() {
         int w = 250;
         int h = 160;
+
         setTitle("ERROR!");
-        setVisible(false);
         setSize(w, h);
         setLayout(null);
         setLocationRelativeTo(null);
 
-        Button cancelButton = new Button("Close");
-
         errorMessage.setHorizontalAlignment(SwingConstants.CENTER);
         errorMessage.setBounds(20, 30, 210, 70);
 
+        Button cancelButton = new Button("Close");
         cancelButton.setBounds(90, 110, 60, 25);
 
         cancelButton.addActionListener(new ActionListener() {
@@ -32,6 +31,8 @@ public class ErrorFrame extends Frame {
 
         add(errorMessage);
         add(cancelButton);
+
+        setVisible(false);
     }
 
     public void displayError(String errorMsg) {

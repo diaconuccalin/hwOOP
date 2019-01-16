@@ -10,7 +10,6 @@ public class SureFrame extends Frame {
         setLayout(null);
         setSize(w, h);
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label l = new Label("Are you sure you want to remove this?", Label.CENTER);
         Button yButton = new Button("Yes");
@@ -40,6 +39,8 @@ public class SureFrame extends Frame {
                 dispose();
             }
         });
+
+        setVisible(true);
     }
 
     public SureFrame(AllEmployees ae, String eName, List ls, Flag yes) {
@@ -49,7 +50,6 @@ public class SureFrame extends Frame {
         setLayout(null);
         setSize(w, h);
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label l = new Label("Are you sure you want to remove this?", Label.CENTER);
         Button yButton = new Button("Yes");
@@ -79,6 +79,8 @@ public class SureFrame extends Frame {
                 dispose();
             }
         });
+
+        setVisible(true);
     }
 
     public SureFrame(AllRoutes ar, int routeID, List ls, Flag yes) {
@@ -88,7 +90,6 @@ public class SureFrame extends Frame {
         setLayout(null);
         setSize(w, h);
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label l = new Label("Are you sure you want to remove this?", Label.CENTER);
         Button yButton = new Button("Yes");
@@ -118,5 +119,7 @@ public class SureFrame extends Frame {
                 dispose();
             }
         });
+
+        setVisible(true);
     }
 }

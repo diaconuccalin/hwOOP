@@ -9,16 +9,14 @@ public class Stop extends Place {
     public String getName() {
         return name;
     }
+    public AllRoutes getAr() {
+        return ar;
+    }
 
     public void addRoute(Route r) {
         ar.addRoute(r);
     }
-
     public void removeRoute(Route r) {
         ar.removeRoute(r.getId());
-    }
-
-    public AllRoutes getAr() {
-        return ar;
     }
 }

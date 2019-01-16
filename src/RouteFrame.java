@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,12 +9,12 @@ public class RouteFrame extends Frame{
         int w = 590;
         int h = 600;
 
+        Color lightestGray = new Color(230, 230, 230);
+
         setLayout(null);
         setSize(w, h);
         setTitle("Route: " + r.getId());
         setLocationRelativeTo(null);
-        setVisible(true);
-
 
         Label l1 = new Label("Info", Label.CENTER);
         Label l2 = new Label("Control", Label.CENTER);
@@ -25,19 +24,19 @@ public class RouteFrame extends Frame{
         l2.setBounds(210, 40, 170, 20);
         l3.setBounds(400, 40, 170, 20);
 
-
         Panel p1 = new Panel();
         Panel p2 = new Panel();
         List ls = new List();
 
-        Color lightestGray = new Color(230, 230, 230);
+        p1.setBounds(20, 70, 170, 480);
+        p2.setBounds(210, 70, 170, 480);
+        ls.setBounds(400, 70, 170, 450);
 
         p1.setBackground(lightestGray);
         p2.setBackground(lightestGray);
 
-        p1.setBounds(20, 70, 170, 480);
-        p2.setBounds(210, 70, 170, 480);
-        ls.setBounds(400, 70, 170, 450);
+        p1.setLayout(null);
+        p2.setLayout(null);
 
         int rn = r.getN();
         Stop[] s = r.getStops();
@@ -46,10 +45,6 @@ public class RouteFrame extends Frame{
         }
 
         ls.select(0);
-
-
-        p1.setLayout(null);
-        p2.setLayout(null);
 
         Label IDLabel = new Label("ID: " + r.getId(), Label.LEFT);
         p1.add(IDLabel);
@@ -61,13 +56,6 @@ public class RouteFrame extends Frame{
         Button cancelButton = new Button("Close");
         cancelButton.setBounds(270, 560, 50, 20);
 
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
-
         seeStopDetails.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,6 +66,13 @@ public class RouteFrame extends Frame{
                 } catch (NullPointerException npe) {
                     ef.displayError("No item selected!");
                 }
+            }
+        });
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
 
@@ -121,7 +116,6 @@ public class RouteFrame extends Frame{
             }
         });
 
-
         add(l1);
         add(l2);
         add(l3);
@@ -130,5 +124,7 @@ public class RouteFrame extends Frame{
         add(ls);
         add(cancelButton);
         add(seeStopDetails);
+
+        setVisible(true);
     }
 }

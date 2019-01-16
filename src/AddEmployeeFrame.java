@@ -11,7 +11,6 @@ public class AddEmployeeFrame extends Frame {
         setSize(w, h);
         setTitle("Add Employee");
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label nameLabel = new Label("Name:", Label.RIGHT);
         TextField tf = new TextField();
@@ -24,13 +23,6 @@ public class AddEmployeeFrame extends Frame {
 
         addButton.setBounds(65, 100, 50, 20);
         cancelButton.setBounds(125, 100, 50, 20);
-
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -46,9 +38,18 @@ public class AddEmployeeFrame extends Frame {
             }
         });
 
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
         add(nameLabel);
         add(tf);
         add(addButton);
         add(cancelButton);
+
+        setVisible(true);
     }
 }

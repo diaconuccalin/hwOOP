@@ -13,6 +13,20 @@ public class Employee {
     public String getName() {
         return name;
     }
+    public boolean isOnRoad() {
+        return onRoad;
+    }
+    public void setOnRoad(boolean onRoad) {
+        this.onRoad = onRoad;
+    }
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        activeTime = 180;
+        this.vehicle = vehicle;
+    }
 
     public void passTime(int time, ErrorFrame ef) {
         if(onRoad) {
@@ -24,22 +38,5 @@ public class Employee {
                 ef.displayError("<html><div align = \"center\">15 minutes left for employee " + name + " on vehicle " + vehicle.getId() + "!</div></html>");
             }
         }
-    }
-
-    public boolean isOnRoad() {
-        return onRoad;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        activeTime = 180;
-        this.vehicle = vehicle;
-    }
-
-    public void setOnRoad(boolean onRoad) {
-        this.onRoad = onRoad;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
     }
 }

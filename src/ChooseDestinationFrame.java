@@ -9,34 +9,24 @@ public class ChooseDestinationFrame extends Frame {
 
         setLayout(null);
         setSize(w, h);
+        setTitle("Choose Route");
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label l = new Label("Choose the route to designate:", Label.CENTER);
         Choice routes = new Choice();
-        Button okButton = new Button("OK");
-        Button cancelButton = new Button("Cancel");
 
         l.setBounds(10, 35, 230, 30);
         routes.setBounds(75, 65, 100, 60);
+
+        Button okButton = new Button("OK");
+        Button cancelButton = new Button("Cancel");
+
         okButton.setBounds(67, 100, 50, 22);
         cancelButton.setBounds(133, 100, 50, 22);
-
-        add(l);
-        add(routes);
-        add(okButton);
-        add(cancelButton);
 
         for(int i = 0; i < ar.getN(); i++) {
             routes.add(ar.getAll()[i].getId() + "");
         }
-
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
 
         okButton.addActionListener(new ActionListener() {
             @Override
@@ -49,6 +39,20 @@ public class ChooseDestinationFrame extends Frame {
                 dispose();
             }
         });
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+        add(l);
+        add(routes);
+        add(okButton);
+        add(cancelButton);
+
+        setVisible(true);
     }
 
     public ChooseDestinationFrame(Depot d1, Depot d2, Depot d3, Vehicle v, AllEmployees ae, int[][] distances) {
@@ -57,34 +61,24 @@ public class ChooseDestinationFrame extends Frame {
 
         setLayout(null);
         setSize(w, h);
+        setTitle("Choose Depot");
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label l = new Label("Choose the depot to send to:", Label.CENTER);
         Choice depots = new Choice();
-        Button okButton = new Button("OK");
-        Button cancelButton = new Button("Cancel");
 
         l.setBounds(10, 35, 230, 30);
         depots.setBounds(75, 65, 100, 60);
+
+        Button okButton = new Button("OK");
+        Button cancelButton = new Button("Cancel");
+
         okButton.setBounds(67, 100, 50, 22);
         cancelButton.setBounds(133, 100, 50, 22);
-
-        add(l);
-        add(depots);
-        add(okButton);
-        add(cancelButton);
 
         depots.add("Bucium");
         depots.add("Unirii");
         depots.add("Zorilor");
-
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
 
         okButton.addActionListener(new ActionListener() {
             @Override
@@ -118,5 +112,19 @@ public class ChooseDestinationFrame extends Frame {
                 dispose();
             }
         });
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+        add(l);
+        add(depots);
+        add(okButton);
+        add(cancelButton);
+
+        setVisible(true);
     }
 }

@@ -6,6 +6,13 @@ public class AllVehicles {
         n = 0;
     }
 
+    public int getN() {
+        return n;
+    }
+    public Vehicle[] getPark() {
+        return park;
+    }
+
     public int addVehicle(Vehicle v) {
         for(int i = 0; i < n; i++) {
             if((v.getType() + v.getId()).compareTo(park[i].getType()+park[i].getId()) < 0) {
@@ -22,6 +29,22 @@ public class AllVehicles {
         return n-1;
     }
 
+    public Vehicle getVehicle (int id) {
+        for(int i = 0; i < n; i++) {
+            if(park[i].getId() == id) {
+                return park[i];
+            }
+        }
+
+        return null;
+    }
+
+    public Vehicle getVehicle(String s) {
+        String sAux = s.replaceAll("[^0-9]", "");
+        int aux = Integer.parseInt(sAux);
+        return getVehicle(aux);
+    }
+
     public void removeVehicle(int id) {
         for(int i = 0; i < n; i++) {
             if(park[i].getId() == id) {
@@ -32,39 +55,9 @@ public class AllVehicles {
         }
     }
 
-    public void printVehicles() {
-        for(int i = 0; i < n; i++) {
-            System.out.println(park[i].getType() + " - " + park[i].getId());
-        }
-    }
-
-    public int getN() {
-        return n;
-    }
-
-    public Vehicle[] getPark() {
-        return park;
-    }
-
-    public Vehicle findVehicle (int id) {
-        for(int i = 0; i < n; i++) {
-            if(park[i].getId() == id) {
-                return park[i];
-            }
-        }
-
-        return null;
-    }
-
     public void passTime(int time, int[][] distances) {
         for(int i = 0; i < n; i++) {
             park[i].passTime(time, distances);
         }
-    }
-
-    public Vehicle getVehicle(String s) {
-        String sAux = s.replaceAll("[^0-9]", "");
-        int aux = Integer.parseInt(sAux);
-        return findVehicle(aux);
     }
 }

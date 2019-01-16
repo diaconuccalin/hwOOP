@@ -9,10 +9,10 @@ public class TimeControlFrame extends Frame {
         int w = 250;
         int h = 200;
 
-        setTitle("Time Control");
-        setVisible(true);
         setSize(w, h);
+        setTitle("Time Control");
         setLayout(null);
+
         Point p = mf.getLocation();
         setLocation(p.x + 790, p.y);
 
@@ -58,5 +58,7 @@ public class TimeControlFrame extends Frame {
                 l.setText("Time elapsed: " + t + " minutes.");
             }
         });
+
+        setVisible(true);
     }
 }

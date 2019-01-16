@@ -6,6 +6,14 @@ public class AllStops {
         n = 0;
     }
 
+    public int getN() {
+        return n;
+    }
+
+    public Stop[] getAll() {
+        return all;
+    }
+
     public int addStop(Stop s) {
         for(int i = 0; i < n; i++) {
             if(s.getName().compareTo(all[i].getName()) < 0) {
@@ -21,22 +29,8 @@ public class AllStops {
         return n - 1;
     }
 
-    public void removeStop(String name) {
-        for(int i = 0; i < n; i++) {
-            if(all[i].getName().equals(name)) {
-                all[i] = all[n - 1];
-                n--;
-                break;
-            }
-        }
-    }
-
-    public int getN() {
-        return n;
-    }
-
-    public Stop[] getAll() {
-        return all;
+    public Stop getStop(int index) {
+        return all[index];
     }
 
     public Stop getStop(String name) {
@@ -47,9 +41,5 @@ public class AllStops {
         }
 
         return all[0];
-    }
-
-    public Stop getStop(int index) {
-        return all[index];
     }
 }

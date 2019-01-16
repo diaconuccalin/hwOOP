@@ -11,10 +11,13 @@ public class AddRouteS2 extends Frame {
         setSize(w, h);
         setTitle("Add Route");
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label stopLabel = new Label("Stop:", Label.RIGHT);
         Choice stopChoice = new Choice();
+
+        stopLabel.setBounds(20, 50, 40, 18);
+        stopChoice.setBounds(65, 50, 150, 18);
+
 
         int n = as.getN();
         Stop[] all = as.getAll();
@@ -34,12 +37,14 @@ public class AddRouteS2 extends Frame {
             }
         }
 
-        stopLabel.setBounds(20, 50, 40, 18);
-        stopChoice.setBounds(65, 50, 150, 18);
 
         Button addButton = new Button("Add");
         Button doneButton = new Button("Done");
         Button cancelButton = new Button("Cancel");
+
+        addButton.setBounds(40, 100, 50, 20);
+        doneButton.setBounds(100, 100, 50, 20);
+        cancelButton.setBounds(160, 100, 50, 20);
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -72,9 +77,10 @@ public class AddRouteS2 extends Frame {
             }
         });
 
-        addButton.setBounds(40, 100, 50, 20);
-        doneButton.setBounds(100, 100, 50, 20);
-        cancelButton.setBounds(160, 100, 50, 20);
+        if((n - nr) == 0) {
+            ls.add(r.getId() + "");
+            dispose();
+        }
 
         add(stopLabel);
         add(stopChoice);
@@ -82,9 +88,6 @@ public class AddRouteS2 extends Frame {
         add(cancelButton);
         add(doneButton);
 
-        if((n - nr) == 0) {
-            ls.add(r.getId() + "");
-            dispose();
-        }
+        setVisible(true);
     }
 }

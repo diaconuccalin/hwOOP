@@ -11,8 +11,6 @@ public class AddVehicleFrame extends Frame {
         setSize(w, h);
         setTitle("Add Vehicle");
         setLocationRelativeTo(null);
-        setVisible(true);
-
 
         Label idLabel = new Label("ID:", Label.RIGHT);
         TextField idTF = new TextField();
@@ -20,27 +18,21 @@ public class AddVehicleFrame extends Frame {
         idLabel.setBounds(20, 50, 40, 18);
         idTF.setBounds(65, 50, 150, 18);
 
-
         Label typeLabel = new Label("Type:", Label.RIGHT);
         Choice typeChoice = new Choice();
+
+        typeLabel.setBounds(20, 70, 40, 15);
+        typeChoice.setBounds(65, 70, 150, 15);
 
         typeChoice.add("BUS");
         typeChoice.add("TROLLEYBUS");
         typeChoice.add("SERVICE VEHICLE");
 
-        typeLabel.setBounds(20, 70, 40, 15);
-        typeChoice.setBounds(65, 70, 150, 15);
-
-
         Button addButton = new Button("Add");
         Button cancelButton = new Button("Cancel");
 
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        addButton.setBounds(65, 100, 50, 20);
+        cancelButton.setBounds(125, 100, 50, 20);
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -81,9 +73,12 @@ public class AddVehicleFrame extends Frame {
             }
         });
 
-        addButton.setBounds(65, 100, 50, 20);
-        cancelButton.setBounds(125, 100, 50, 20);
-
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         add(idLabel);
         add(idTF);
@@ -91,5 +86,7 @@ public class AddVehicleFrame extends Frame {
         add(typeLabel);
         add(addButton);
         add(cancelButton);
+
+        setVisible(true);
     }
 }

@@ -8,7 +8,6 @@ public class Flag {
     public void setAux(boolean aux) {
         this.aux = aux;
     }
-
     public boolean getAux() {
         return aux;
     }

@@ -6,6 +6,13 @@ public class AllRoutes {
         n = 0;
     }
 
+    public int getN() {
+        return n;
+    }
+    public Route[] getAll() {
+        return all;
+    }
+
     public int addRoute(Route r) {
         for(int i = 0; i < n; i++) {
             if(all[i].getId() > r.getId()) {
@@ -20,30 +27,6 @@ public class AllRoutes {
         return n-1;
     }
 
-    public void removeRoute(int id) {
-        for(int i = 0; i < n; i++) {
-            if(all[i].getId() == id) {
-                all[i] = all[n - 1];
-                n--;
-                break;
-            }
-        }
-    }
-
-    public void printRoutes() {
-        for(int i = 0; i < n; i++) {
-            System.out.println(all[i].getId());
-        }
-    }
-
-    public int getN() {
-        return n;
-    }
-
-    public Route[] getAll() {
-        return all;
-    }
-
     public Route getRoute(String sId) {
         int id = Integer.parseInt(sId);
         for(int i = 0; i < n; i++) {
@@ -54,13 +37,14 @@ public class AllRoutes {
         return null;
     }
 
-    public Route getRoute(int id) {
+    public void removeRoute(int id) {
         for(int i = 0; i < n; i++) {
-            if(all[i].getId() == id)
-                return all[i];
+            if(all[i].getId() == id) {
+                all[i] = all[n - 1];
+                n--;
+                break;
+            }
         }
-
-        return null;
     }
 
     public int getIndex(int id) {

@@ -10,12 +10,12 @@ public class StopFrame extends Frame {
         int w = 400;
         int h = 600;
 
+        Color lightestGray = new Color(230, 230, 230);
+
         setLayout(null);
         setSize(w, h);
         setTitle("Stop: " + s.getName());
         setLocationRelativeTo(null);
-        setVisible(true);
-
 
         Label l1 = new Label("Info", Label.CENTER);
         Label l2 = new Label("Routes", Label.CENTER);
@@ -26,13 +26,11 @@ public class StopFrame extends Frame {
         Panel p1 = new Panel();
         Panel p2 = new Panel();
 
-        Color lightestGray = new Color(230, 230, 230);
+        p1.setBounds(20, 70, 170, 480);
+        p2.setBounds(210, 70, 170, 480);
 
         p1.setBackground(lightestGray);
         p2.setBackground(lightestGray);
-
-        p1.setBounds(20, 70, 170, 480);
-        p2.setBounds(210, 70, 170, 480);
 
         p1.setLayout(null);
         p2.setLayout(new BoxLayout(p2, BoxLayout.PAGE_AXIS));
@@ -63,7 +61,6 @@ public class StopFrame extends Frame {
 
         p2.add(Box.createVerticalStrut(p2.getHeight() - aux.getN() * 20));
 
-
         Button cancelButton = new Button("Close");
         cancelButton.setBounds(175, 560, 50, 20);
 
@@ -74,11 +71,12 @@ public class StopFrame extends Frame {
             }
         });
 
-
         add(l1);
         add(l2);
         add(p1);
         add(p2);
         add(cancelButton);
+
+        setVisible(true);
     }
 }

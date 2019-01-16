@@ -11,7 +11,6 @@ public class AddRouteS1 extends Frame {
         setSize(w, h);
         setTitle("Add Route");
         setLocationRelativeTo(null);
-        setVisible(true);
 
         Label idLabel = new Label("ID:", Label.RIGHT);
         TextField idTF = new TextField();
@@ -22,12 +21,8 @@ public class AddRouteS1 extends Frame {
         Button createButton = new Button("Create");
         Button cancelButton = new Button("Cancel");
 
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        createButton.setBounds(65, 100, 50, 20);
+        cancelButton.setBounds(125, 100, 50, 20);
 
         createButton.addActionListener(new ActionListener() {
             @Override
@@ -43,7 +38,7 @@ public class AddRouteS1 extends Frame {
                     error = true;
                 }
 
-                if(error == false) {
+                if(!error) {
                     Route r = new Route(auxID);
                     ar.addRoute(r);
 
@@ -54,12 +49,18 @@ public class AddRouteS1 extends Frame {
             }
         });
 
-        createButton.setBounds(65, 100, 50, 20);
-        cancelButton.setBounds(125, 100, 50, 20);
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         add(idLabel);
         add(idTF);
         add(createButton);
         add(cancelButton);
+
+        setVisible(true);
     }
 }

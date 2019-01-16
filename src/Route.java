@@ -1,6 +1,7 @@
 public class Route {
     private int id;
     private int n;
+
     private Stop[] stops = new Stop[200];
     private AllVehicles av = new AllVehicles();
 
@@ -9,25 +10,33 @@ public class Route {
         n = 0;
     }
 
+    public int getId() {
+        return id;
+    }
+    public Stop[] getStops() {
+        return stops;
+    }
+    public int getN() {
+        return n;
+    }
+
     public void addStop(Stop st) {
         stops[n] = st;
         n++;
         st.addRoute(this);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public Stop[] getStops() {
-        return stops;
-    }
-
-    public int getN() {
-        return n;
-    }
-
     public Stop getFirstStop() {return stops[0];}
+    public AllVehicles getAv() {
+        return av;
+    }
+
+    public void addVehicle(Vehicle v) {
+        av.addVehicle(v);
+    }
+    public void removeVehicle(Vehicle v) {
+        av.removeVehicle(v.getId());
+    }
 
     public Place getNextStop(Place stop) {
         for(int i=0; i<stops.length - 1; i++)
@@ -35,14 +44,6 @@ public class Route {
             if(stop == stops[i]) return stops[i+1];
         }
         return stops[0];
-    }
-
-    public void addVehicle(Vehicle v) {
-        av.addVehicle(v);
-    }
-
-    public void removeVehicle(Vehicle v) {
-        av.removeVehicle(v.getId());
     }
 
     public int getClosestToStop(Stop s, int[][] distances) {
@@ -56,9 +57,5 @@ public class Route {
         }
 
         return min;
-    }
-
-    public AllVehicles getAv() {
-        return av;
     }
 }

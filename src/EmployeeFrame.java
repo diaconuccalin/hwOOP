@@ -9,12 +9,12 @@ public class EmployeeFrame extends Frame {
         int w = 400;
         int h = 600;
 
+        Color lightestGray = new Color(230, 230, 230);
+
         setLayout(null);
         setSize(w, h);
         setTitle("Employee: " + e.getName());
         setLocationRelativeTo(null);
-        setVisible(true);
-
 
         Label l1 = new Label("Info", Label.CENTER);
         Label l2 = new Label("Control", Label.CENTER);
@@ -25,13 +25,11 @@ public class EmployeeFrame extends Frame {
         Panel p1 = new Panel();
         Panel p2 = new Panel();
 
-        Color lightestGray = new Color(230, 230, 230);
+        p1.setBounds(20, 70, 170, 480);
+        p2.setBounds(210, 70, 170, 480);
 
         p1.setBackground(lightestGray);
         p2.setBackground(lightestGray);
-
-        p1.setBounds(20, 70, 170, 480);
-        p2.setBounds(210, 70, 170, 480);
 
         p1.setLayout(null);
         p2.setLayout(null);
@@ -90,11 +88,12 @@ public class EmployeeFrame extends Frame {
             }
         });
 
-
         add(l1);
         add(l2);
         add(p1);
         add(p2);
         add(cancelButton);
+
+        setVisible(true);
     }
 }

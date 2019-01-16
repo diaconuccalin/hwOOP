@@ -10,12 +10,4 @@ public class AllPlaces {
         all[n] = p;
         n++;
     }
-
-    public Place[] getAll() {
-        return all;
-    }
-
-    public Place getPlace(int index) {
-        return all[index];
-    }
 }

@@ -20,9 +20,7 @@ public class Vehicle {
     Vehicle(int id, vehicleType type) {
         this.id = id;
         this.type = type;
-
         malfunction = false;
-
         activeRoute = null;
         timeToDestination = 0;
     }
@@ -30,27 +28,32 @@ public class Vehicle {
     public int getId() {
         return id;
     }
-
     public String getType() {
         return type.toString();
     }
-
     public boolean isMalfunction() {
         return malfunction;
     }
-
-    public void setMalfunction(boolean malfunction) {
-        this.malfunction = malfunction;
+    public Route getActiveRoute() {
+        return activeRoute;
     }
-
-    public void passTime(int time, int[][] distances) {
-        if(timeToDestination >= 0) {
-            timeToDestination -= time;
-        }
-        if(timeToDestination == 0 && activeRoute != null){
-            timeToDestination = distances[destination.getId()][activeRoute.getNextStop(destination).getId()];
-            destination = activeRoute.getNextStop(destination);
-        }
+    public Depot getCurrentDepot() {
+        return currentDepot;
+    }
+    public Employee getDriver() {
+        return driver;
+    }
+    public Place getDestination() {
+        return destination;
+    }
+    public int getTimeToDestination() {
+        return timeToDestination;
+    }
+    public void setActiveRoute(Route activeRoute) {
+        this.activeRoute = activeRoute;
+    }
+    public void setCurrentDepot(Depot currentDepot) {
+        this.currentDepot = currentDepot;
     }
 
     public void sendOnRoute(Route r, AllEmployees ae, int[][] distances) {
@@ -84,31 +87,13 @@ public class Vehicle {
         driver = null;
     }
 
-    public Route getActiveRoute() {
-        return activeRoute;
-    }
-
-    public void setCurrentDepot(Depot currentDepot) {
-        this.currentDepot = currentDepot;
-    }
-
-    public Depot getCurrentDepot() {
-        return currentDepot;
-    }
-
-    public void setActiveRoute(Route activeRoute) {
-        this.activeRoute = activeRoute;
-    }
-
-    public Employee getDriver() {
-        return driver;
-    }
-
-    public Place getDestination() {
-        return destination;
-    }
-
-    public int getTimeToDestination() {
-        return timeToDestination;
+    public void passTime(int time, int[][] distances) {
+        if(timeToDestination >= 0) {
+            timeToDestination -= time;
+        }
+        if(timeToDestination == 0 && activeRoute != null){
+            timeToDestination = distances[destination.getId()][activeRoute.getNextStop(destination).getId()];
+            destination = activeRoute.getNextStop(destination);
+        }
     }
 }
