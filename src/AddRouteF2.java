@@ -2,8 +2,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddRouteS2 extends Frame {
-    public AddRouteS2(Route r, AllStops as, List ls, AllRoutes ar) {
+public class AddRouteF2 extends Frame {
+    public AddRouteF2(Route r, AllStops as, List ls, AllRoutes ar) {
         int w = 250;
         int h = 150;
 
@@ -52,7 +52,7 @@ public class AddRouteS2 extends Frame {
                 Stop toAdd = as.getStop(stopChoice.getSelectedItem());
                 r.addStop(toAdd);
                 toAdd.addRoute(r);
-                AddRouteS2 ar2 = new AddRouteS2(r, as, ls, ar);
+                AddRouteF2 ar2 = new AddRouteF2(r, as, ls, ar);
                 dispose();
             }
         });

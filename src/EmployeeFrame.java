@@ -35,8 +35,25 @@ public class EmployeeFrame extends Frame {
         p2.setLayout(null);
 
         Label nameLabel = new Label("Name: " + e.getName(), Label.LEFT);
-        p1.add(nameLabel);
         nameLabel.setBounds(2, 0, 170, 18);
+        p1.add(nameLabel);
+
+        Label onRoadLabel = new Label();
+        onRoadLabel.setBounds(2, 15, 170, 18);
+        p1.add(onRoadLabel);
+        if(e.isOnRoad()) {
+            onRoadLabel.setText("Active: YES");
+
+            Label vehicleLabel = new Label("Current vehicle: " + e.getVehicle().getType() + " - " + e.getVehicle().getId());
+            vehicleLabel.setBounds(2, 30, 170, 18);
+            p1.add(vehicleLabel);
+
+            Label timeLabel = new Label("Active time: " + (160 - e.getActiveTime()));
+            timeLabel.setBounds(2, 45, 170, 18);
+            p1.add(timeLabel);
+        }else {
+            onRoadLabel.setText("Active: NO");
+        }
 
         Button cancelButton = new Button("Close");
         cancelButton.setBounds(175, 560, 50, 20);

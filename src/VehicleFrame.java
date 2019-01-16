@@ -7,6 +7,9 @@ public class VehicleFrame extends Frame {
     Label malfunctionLabel = new Label();
     Label routeLabel = new Label();
     Label depotLabel = new Label();
+    Label timeLabel = new Label();
+    Label destinationLabel = new Label();
+    Label driverLabel = new Label();
 
     public VehicleFrame(Vehicle v, AllVehicles av, List ls, AllRoutes ar, AllEmployees ae, int[][] distances, Depot d1, Depot d2, Depot d3) {
         int w = 400;
@@ -45,17 +48,29 @@ public class VehicleFrame extends Frame {
         p1.add(idLabel);
         idLabel.setBounds(2, 15, 170, 18);
 
+        depotLabel.setAlignment(Label.LEFT);
+        p1.add(depotLabel);
+        depotLabel.setBounds(2, 30, 170, 18);
+
         malfunctionLabel.setAlignment(Label.LEFT);
         p1.add(malfunctionLabel);
         malfunctionLabel.setBounds(2, 45, 170, 18);
 
         routeLabel.setAlignment(Label.LEFT);
         p1.add(routeLabel);
-        routeLabel.setBounds(2, 60, 170, 18);
+        routeLabel.setBounds(2, 75, 170, 18);
 
-        depotLabel.setAlignment(Label.LEFT);
-        p1.add(depotLabel);
-        depotLabel.setBounds(2, 30, 170, 18);
+        timeLabel.setAlignment(Label.LEFT);
+        p1.add(timeLabel);
+        timeLabel.setBounds(2, 105, 170, 18);
+
+        destinationLabel.setAlignment(Label.LEFT);
+        p1.add(destinationLabel);
+        destinationLabel.setBounds(2, 90, 170, 18);
+
+        driverLabel.setAlignment(Label.LEFT);
+        p1.add(driverLabel);
+        driverLabel.setBounds(2, 120, 170, 18);
 
         updateLabels(v);
 
@@ -221,9 +236,15 @@ public class VehicleFrame extends Frame {
 
         if(v.getActiveRoute() != null) {
             routeLabel.setText("Route: " + v.getActiveRoute().getId());
+            timeLabel.setText("Time to next stop: " + v.getTimeToDestination());
+            destinationLabel.setText("Next stop: " + v.getDestination().getId());
+            driverLabel.setText("Driver: " + v.getDriver().getName());
         }
         else {
             routeLabel.setText("Route: NONE");
+            timeLabel.setText("Time to next stop: NONE");
+            destinationLabel.setText("Next stop: NONE");
+            driverLabel.setText("Driver: NONE");
         }
 
         if(v.getCurrentDepot() != null) {

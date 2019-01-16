@@ -2,8 +2,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddRouteS1 extends Frame {
-    public AddRouteS1 (List ls, AllRoutes ar, ErrorFrame ef, AllStops as){
+public class AddRouteF1 extends Frame {
+    public AddRouteF1(List ls, AllRoutes ar, ErrorFrame ef, AllStops as){
         int w = 250;
         int h = 150;
 
@@ -42,7 +42,7 @@ public class AddRouteS1 extends Frame {
                     Route r = new Route(auxID);
                     ar.addRoute(r);
 
-                    AddRouteS2 ar2 = new AddRouteS2(r, as, ls, ar);
+                    AddRouteF2 ar2 = new AddRouteF2(r, as, ls, ar);
                 }
 
                 dispose();

@@ -338,7 +338,7 @@ public class MainFrame extends Frame{
         addRouteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AddRouteS1 ars = new AddRouteS1(ls3, ar, ef, as);
+                AddRouteF1 ars = new AddRouteF1(ls3, ar, ef, as);
             }
         });
 

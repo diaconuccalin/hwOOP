@@ -22,6 +22,9 @@ public class Employee {
     public Vehicle getVehicle() {
         return vehicle;
     }
+    public int getActiveTime() {
+        return activeTime;
+    }
 
     public void setVehicle(Vehicle vehicle) {
         activeTime = 180;
